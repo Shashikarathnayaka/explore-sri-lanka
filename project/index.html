@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Explore Sri Lanka - Home</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+
+    <!-- ══════════════════════════════════════
+         NAVBAR  (never changes)
+    ══════════════════════════════════════ -->
+    <header>
+        <nav class="navbar" id="navbar">
+            <div class="logo-container">
+                <img src="images/lion.png" alt="Logo" class="logo-img">
+                <h2>Explore Sri Lanka</h2>
+            </div>
+            <ul class="menu">
+                <li><a href="#" onclick="loadPage('home')" data-page="home" class="nav-link active">Home</a></li>
+                <li><a href="#" onclick="loadPage('destinations')" data-page="destinations"
+                        class="nav-link">Destinations</a></li>
+                <li><a href="#" onclick="loadPage('traveltips')" data-page="traveltips" class="nav-link">Travel Tips</a>
+                </li>
+                <li><a href="#" onclick="loadPage('gallery')" data-page="gallery" class="nav-link">Gallery</a></li>
+                <li><a href="#" onclick="loadPage('map')" data-page="map" class="nav-link">Map</a></li>
+                <li><a href="#" onclick="loadPage('ourstory')" data-page="ourstory" class="nav-link">Our Story</a></li>
+                <li><a href="#" onclick="loadPage('contact')" data-page="contact" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ══════════════════════════════════════
+         MAIN CONTENT AREA  (only this changes)
+    ══════════════════════════════════════ -->
+    <main id="main-content">
+
+        <!-- ─── PAGE: HOME ─── -->
+        <div id="page-home" class="page active">
+
+            <!-- HERO -->
+            <section class="hero" id="home">
+                <h3>DISCOVER THE PEARL OF THE INDIAN OCEAN</h3>
+                <h1 class="hero-title">
+                    <span class="white">Explore</span>
+                    <span class="gold">Sri Lanka</span>
+                </h1>
+                <p>Ancient Temples, Pristine Beaches, Lush Mountains &amp; Vibrant Culture - Your Unforgettable journey
+                    starts here.</p>
+                <div class="buttons">
+                    <button onclick="loadPage('destinations')">Explore Destinations</button>
+                    <button onclick="loadPage('destinations')">Book Hotels</button>
+                </div>
+            </section>
+
+            <!-- SEARCH -->
+            <section class="search-section">
+                <input type="text" id="searchInput" placeholder="Search destinations...">
+                <button onclick="searchDestination()">Search</button>
+            </section>
+            <div id="php-results">
+                <h4>🔍 Search Results from Server:</h4>
+                <div id="php-result-content"></div>
+            </div>
+
+            <!-- MAP & INFO -->
+            <section class="sri-lanka-info">
+                <div class="map-container">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d395879.9132757409!2d79.79989522364217!3d7.873053582235165!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae25e2f0b6d81b3%3A0x3a1778247194aa9e!2sSri%20Lanka!5e0!3m2!1sen!2slk!4v1698400000000!5m2!1sen!2slk"
+                        width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+                <div class="sri-lanka-text">
+                    <h2>Discover the Jewel of the Indian Ocean</h2>
+                    <p>Sri Lanka, the Pearl of the Indian Ocean, is a land of endless wonders. From pristine golden
+                        beaches and lush tea-covered hills to ancient temples, majestic wildlife, and vibrant festivals,
+                        every corner tells a story.</p>
+                </div>
+            </section>
+
+            <!-- DESTINATION PREVIEW CARDS -->
+            <section class="destinations">
+                <h2>Popular Destinations</h2>
+                <div class="destination-grid">
+                    <div class="card" onclick="loadPage('destinations')">
+                        <img src="images/hero-sri-lanka.jpg" alt="Sigiriya">
+                        <h3>Sigiriya</h3>
+                        <p>The legendary Lion Rock fortress, a UNESCO World Heritage Site.</p>
+                    </div>
+                    <div class="card" onclick="loadPage('destinations')">
+                        <img src="images/ella.jpg" alt="Ella">
+                        <h3>Ella</h3>
+                        <p>Iconic Nine Arch Bridge, tea plantations and breathtaking mountain views.</p>
+                    </div>
+                    <div class="card" onclick="loadPage('destinations')">
+                        <img src="images/mirs.jpg" alt="Mirissa">
+                        <h3>Mirissa</h3>
+                        <p>Famous beach for whale watching.</p>
+                    </div>
+                    <div class="card" onclick="loadPage('destinations')">
+                        <img src="images/maligawa.jpg" alt="Dalada Maligawa">
+                        <h3>Sri Dalada Maligawa</h3>
+                        <p>Historic city famous for the Temple of the Tooth.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- WHY VISIT -->
+            <section class="features">
+                <h2>Why Visit Sri Lanka</h2>
+                <div class="feature-container">
+                    <div class="feature"><i class="fa-solid fa-umbrella-beach"></i>
+                        <h3>Beautiful Beaches</h3>
+                    </div>
+                    <div class="feature"><i class="fa-solid fa-mountain"></i>
+                        <h3>Scenic Mountains</h3>
+                    </div>
+                    <div class="feature"><i class="fa-solid fa-paw"></i>
+                        <h3>Wildlife Safari</h3>
+                    </div>
+                    <div class="feature"><i class="fa-solid fa-landmark"></i>
+                        <h3>Ancient Culture</h3>
+                    </div>
+                </div>
+            </section>
+
+        </div><!-- /page-home -->
+
+
+        <!-- ─── PAGE: DESTINATIONS ─── -->
+        <div id="page-destinations" class="page">
+            <div class="page-header-banner destinations-banner">
+                <h1>Explore Destinations</h1>
+                <p>Discover the most breathtaking places Sri Lanka has to offer</p>
+            </div>
+
+            <div class="destination-container">
+
+                <div class="place">
+                    <img src="images/hero-sri-lanka.jpg" alt="Sigiriya">
+                    <h3>Sigiriya</h3>
+                    <p>The legendary Lion Rock fortress rising 200m above the jungle. A UNESCO World Heritage Site with
+                        ancient frescoes and mirror wall.</p>
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                    <div class="rating-text"><span class="score">4</span>/5</div>
+                    <a href="https://maps.google.com/?q=Sigiriya" target="_blank"><button class="map-btn">📍 View on
+                            Map</button></a>
+                    <div class="review-box">
+                        <input type="text" placeholder="Leave a review...">
+                        <button onclick="addComment(this)">Post</button>
+                    </div>
+                    <div class="comments"></div>
+                </div>
+
+                <div class="place">
+                    <img src="images/ella.jpg" alt="Ella">
+                    <h3>Ella</h3>
+                    <p>Iconic Nine Arch Bridge surrounded by lush tea plantations and stunning mountain panoramas in the
+                        Hill Country.</p>
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <div class="rating-text"><span class="score">5</span>/5</div>
+                    <a href="https://maps.google.com/?q=Ella+Sri+Lanka" target="_blank"><button class="map-btn">📍 View
+                            on Map</button></a>
+                    <div class="review-box">
+                        <input type="text" placeholder="Leave a review...">
+                        <button onclick="addComment(this)">Post</button>
+                    </div>
+                    <div class="comments"></div>
+                </div>
+
+                <div class="place">
+                    <img src="images/mirs.jpg" alt="Mirissa">
+                    <h3>Mirissa</h3>
+                    <p>Famous crescent beach ideal for whale watching, surfing, and incredible sunsets along the
+                        southern coast.</p>
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                    <div class="rating-text"><span class="score">4</span>/5</div>
+                    <a href="https://maps.google.com/?q=Mirissa+Beach" target="_blank"><button class="map-btn">📍 View
+                            on Map</button></a>
+                    <div class="review-box">
+                        <input type="text" placeholder="Leave a review...">
+                        <button onclick="addComment(this)">Post</button>
+                    </div>
+                    <div class="comments"></div>
+                </div>
+
+                <div class="place">
+                    <img src="images/maligawa.jpg" alt="Dalada Maligawa">
+                    <h3>Sri Dalada Maligawa</h3>
+                    <p>Historic Temple of the Sacred Tooth Relic in the heart of Kandy - one of the most venerated
+                        Buddhist sites in Asia.</p>
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <div class="rating-text"><span class="score">5</span>/5</div>
+                    <a href="https://maps.google.com/?q=Temple+of+the+Tooth+Kandy" target="_blank"><button
+                            class="map-btn">📍 View on Map</button></a>
+                    <div class="review-box">
+                        <input type="text" placeholder="Leave a review...">
+                        <button onclick="addComment(this)">Post</button>
+                    </div>
+                    <div class="comments"></div>
+                </div>
+
+                <div class="place">
+                    <img src="images/hero-sri-lanka.jpg" alt="Yala National Park">
+                    <h3>Yala National Park</h3>
+                    <p>Sri Lanka's most visited wildlife reserve, home to one of the highest densities of leopards in
+                        the world.</p>
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                    <div class="rating-text"><span class="score">4</span>/5</div>
+                    <a href="https://maps.google.com/?q=Yala+National+Park" target="_blank"><button class="map-btn">📍
+                            View on Map</button></a>
+                    <div class="review-box">
+                        <input type="text" placeholder="Leave a review...">
+                        <button onclick="addComment(this)">Post</button>
+                    </div>
+                    <div class="comments"></div>
+                </div>
+
+                <div class="place">
+                    <img src="images/ella.jpg" alt="Galle Fort">
+                    <h3>Galle Fort</h3>
+                    <p>A UNESCO World Heritage Dutch colonial fort on the southern tip of Sri Lanka, blending European
+                        and South Asian architecture.</p>
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <div class="rating-text"><span class="score">5</span>/5</div>
+                    <a href="https://maps.google.com/?q=Galle+Fort" target="_blank"><button class="map-btn">📍 View on
+                            Map</button></a>
+                    <div class="review-box">
+                        <input type="text" placeholder="Leave a review...">
+                        <button onclick="addComment(this)">Post</button>
+                    </div>
+                    <div class="comments"></div>
+                </div>
+
+            </div>
+        </div><!-- /page-destinations -->
+
+
+        <!-- ─── PAGE: TRAVEL TIPS ─── -->
+        <div id="page-traveltips" class="page">
+            <div class="page-header-banner tips-banner">
+                <h1>Travel Tips</h1>
+                <p>Everything you need to know before visiting Sri Lanka</p>
+            </div>
+            <div class="info-page-content">
+                <div class="tip-card"><i class="fa-solid fa-passport"></i>
+                    <h3>Visa</h3>
+                    <p>Most visitors can obtain an ETA (Electronic Travel Authorization) online before arrival. Valid
+                        for 30 days, extendable up to 6 months.</p>
+                </div>
+                <div class="tip-card"><i class="fa-solid fa-sun"></i>
+                    <h3>Best Time to Visit</h3>
+                    <p>West & south coast: December–March. East coast & Cultural Triangle: May–September. Avurudu (New
+                        Year) in April is a wonderful cultural experience.</p>
+                </div>
+                <div class="tip-card"><i class="fa-solid fa-money-bill"></i>
+                    <h3>Currency</h3>
+                    <p>Sri Lankan Rupee (LKR). ATMs are widely available. US Dollars and Euros are accepted at most
+                        tourist sites.</p>
+                </div>
+                <div class="tip-card"><i class="fa-solid fa-train"></i>
+                    <h3>Getting Around</h3>
+                    <p>Scenic train rides through the Hill Country are a must. Tuk-tuks for short distances, buses are
+                        economical for long routes.</p>
+                </div>
+                <div class="tip-card"><i class="fa-solid fa-shirt"></i>
+                    <h3>Dress Code</h3>
+                    <p>Cover shoulders and knees when visiting temples. Bring light, breathable clothing for the coast
+                        and warmer layers for the hills.</p>
+                </div>
+                <div class="tip-card"><i class="fa-solid fa-utensils"></i>
+                    <h3>Food</h3>
+                    <p>Try rice & curry, kottu roti, hoppers, and fresh seafood. Street food is delicious but stick to
+                        busy stalls for safety.</p>
+                </div>
+            </div>
+        </div><!-- /page-traveltips -->
+
+
+        <!-- ─── PAGE: GALLERY ─── -->
+        <div id="page-gallery" class="page">
+            <div class="page-header-banner gallery-banner">
+                <h1>Gallery</h1>
+                <p>A visual journey through the Pearl of the Indian Ocean</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item"><img src="images/hero-sri-lanka.jpg" alt="Sigiriya"><span>Sigiriya Rock
+                        Fortress</span></div>
+                <div class="gallery-item"><img src="images/ella.jpg" alt="Ella"><span>Nine Arch Bridge, Ella</span>
+                </div>
+                <div class="gallery-item"><img src="images/mirs.jpg" alt="Mirissa"><span>Mirissa Beach</span></div>
+                <div class="gallery-item"><img src="images/maligawa.jpg" alt="Kandy"><span>Temple of the Tooth</span>
+                </div>
+                <div class="gallery-item"><img src="images/hero-sri-lanka.jpg" alt="Wildlife"><span>Yala
+                        Wildlife</span></div>
+                <div class="gallery-item"><img src="images/ella.jpg" alt="Tea"><span>Tea Plantations</span></div>
+            </div>
+        </div><!-- /page-gallery -->
+
+
+        <!-- ─── PAGE: MAP ─── -->
+        <div id="page-map" class="page">
+            <div class="page-header-banner map-banner">
+                <h1>Explore the Map</h1>
+                <p>Find all the amazing destinations across Sri Lanka</p>
+            </div>
+            <section class="sri-lanka-info" style="margin-top:0; padding-top:40px;">
+                <div class="map-container">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d395879.9132757409!2d79.79989522364217!3d7.873053582235165!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae25e2f0b6d81b3%3A0x3a1778247194aa9e!2sSri%20Lanka!5e0!3m2!1sen!2slk!4v1698400000000!5m2!1sen!2slk"
+                        width="100%" height="500" style="border:0;" allowfullscreen="" loading="lazy">
+                    </iframe>
+                </div>
+                <div class="sri-lanka-text">
+                    <h2>Discover the Jewel of the Indian Ocean</h2>
+                    <p>From the ancient ruins of Anuradhapura in the north to the pristine beaches of the south, Sri
+                        Lanka packs an extraordinary range of experiences into a compact island. Use the map to plan
+                        your perfect itinerary.</p>
+                </div>
+            </section>
+        </div><!-- /page-map -->
+
+
+    <!-- ─── PAGE: OUR STORY ─── -->
+    <div id="page-ourstory" class="page">
+    
+        <div class="page-header-banner story-banner">
+            <h1>Our Story</h1>
+            <p>The people behind Explore Sri Lanka</p>
+        </div>
+    
+        <div class="info-page-content story-content">
+    
+            <!-- ABOUT -->
+            <div class="story-text">
+                <h2>About Explore Sri Lanka</h2>
+                <p>Explore Sri Lanka was created with a passion to showcase the beauty, culture, and natural wonders of
+                    Sri Lanka to travelers from around the world. Our platform was built to help visitors discover the
+                    island's most breathtaking destinations from ancient heritage sites and sacred temples to golden
+                    beaches, misty mountains, and vibrant wildlife parks. We believe that travel is more than just
+                    visiting places; it is about experiencing cultures, creating memories, and discovering the unique
+                    stories that every destination holds.</p>
+                <p>Through our website, we provide helpful information, travel inspiration, and destination guides that
+                    allow travelers to plan their journeys easily. Whether you are looking for adventure, relaxation,
+                    cultural experiences, or scenic landscapes, Explore Sri Lanka connects you with the best locations
+                    across the island.</p>
+    
+                <h2>Born from a Love of Sri Lanka</h2>
+                <p>Explore Sri Lanka was founded by a group of passionate travelers and locals who wanted to share the
+                    true beauty of our island paradise with the world. We believe every visitor deserves an authentic,
+                    unforgettable experience.</p>
+                <p>From the misty highlands of Nuwara Eliya to the ancient rock fortresses of the Cultural Triangle,
+                    we've walked every path and tasted every dish to bring you the most accurate, heartfelt guide to
+                    our home.</p>
+            </div>
+    
+            <!-- VISION & MISSION -->
+            <div class="story-vm-section">
+                <div class="story-vm-box">
+                    <h3>Our Vision</h3>
+                    <p>To become the leading travel inspiration platform that introduces the beauty, heritage, and
+                        natural wonders of Sri Lanka to the world, encouraging sustainable tourism and unforgettable
+                        travel experiences.</p>
+                </div>
+                <div class="story-vm-box">
+                    <h3>Our Mission</h3>
+                    <p>To connect travelers with the real Sri Lanka — its people, culture, nature, and history — while
+                        promoting responsible and sustainable tourism that benefits local communities.</p>
+                </div>
+            </div>
+    
+            <!-- SERVICES -->
+            <section class="services">
+                <h2>Our Services</h2>
+                <div class="service-grid">
+                    <div class="service">
+                        <h4>Destination Guides</h4>
+                        <p>Discover Sri Lanka's most beautiful places including beaches, mountains, and heritage sites.</p>
+                    </div>
+                    <div class="service">
+                        <h4>Travel Tips</h4>
+                        <p>Helpful information about transportation, culture, weather, and travel safety.</p>
+                    </div>
+                    <div class="service">
+                        <h4>Hotel Booking</h4>
+                        <p>Find comfortable hotels and resorts across Sri Lanka for every type of traveler.</p>
+                    </div>
+                    <div class="service">
+                        <h4>Travel Inspiration</h4>
+                        <p>Explore travel stories, photos, and experiences that inspire your next adventure.</p>
+                    </div>
+                </div>
+            </section>
+    
+        </div>
+    </div><!-- /page-ourstory -->
+        
+
+        <!-- ─── PAGE: CONTACT ─── -->
+        <div id="page-contact" class="page">
+            <div class="page-header-banner contact-banner">
+                <h1>Contact Us</h1>
+                <p>We'd love to hear from you</p>
+            </div>
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <h3><i class="fa-solid fa-phone"></i> Phone</h3>
+                    <p>+94 77 123 4567</p>
+                    <h3><i class="fa-solid fa-envelope"></i> Email</h3>
+                    <p>info@example.com</p>
+                    <h3><i class="fa-solid fa-location-dot"></i> Address</h3>
+                    <p>123 Galle Road, Colombo 03, Sri Lanka</p>
+                    <div class="social-icons" style="margin-top:20px;">
+                        <a href="https://www.facebook.com/" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="https://x.com/" class="social-link"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <form class="contact-form" onsubmit="submitContact(event)">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <input type="text" placeholder="Subject">
+                    <textarea rows="5" placeholder="Your Message" required></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </div><!-- /page-contact -->
+
+    </main><!-- /main-content -->
+
+
+    <!-- ══════════════════════════════════════
+         FOOTER  (never changes)
+    ══════════════════════════════════════ -->
+    <footer class="footer">
+        <div class="footer-container">
+
+            <div class="footer-section">
+                <img src="images/lion.png" alt="Logo" class="logo-img">
+                <h2>Explore Sri Lanka</h2>
+                <p>DISCOVER THE PEARL OF THE INDIAN OCEAN</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#" onclick="loadPage('home')">Home</a></li>
+                    <li><a href="#" onclick="loadPage('destinations')">Destinations</a></li>
+                    <li><a href="#" onclick="loadPage('traveltips')">Travel Tips</a></li>
+                    <li><a href="#" onclick="loadPage('gallery')">Gallery</a></li>
+                    <li><a href="#" onclick="loadPage('contact')">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Explore Sri Lanka – Discover the true beauty of our island paradise. From golden beaches to misty
+                    mountains, experience unforgettable journeys. Plan your perfect adventure with our trusted tourism
+                    guide. 🌿</p>
+                <p class="contact-item">📞 Phone: +94 77 123 4567</p>
+                <p class="contact-item">📧 Email: info@example.com</p>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/" class="social-link"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="https://x.com/" class="social-link"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+
+        </div>
+        
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
