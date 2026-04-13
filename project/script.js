@@ -162,3 +162,28 @@ function submitContact(e) {
         e.target.reset();
     }, 3000);
 }
+
+/* ── Navbar login state check ── */
+function updateNavAuth() {
+    var user = JSON.parse(localStorage.getItem('esl_current_user') || 'null');
+    var authOut = document.getElementById('auth-out');
+    var authIn  = document.getElementById('auth-in');
+    var nameEl  = document.getElementById('nav-user-name');
+
+    if (user) {
+        authOut.style.display = 'none';
+        authIn.style.display  = 'flex';
+        nameEl.textContent = user.name;
+    } else {
+        authOut.style.display = 'flex';
+        authIn.style.display  = 'none';
+    }
+}
+
+function logoutUser() {
+    localStorage.removeItem('esl_current_user');
+    localStorage.removeItem('esl_remember');
+    updateNavAuth();
+}
+
+window.addEventListener('load', updateNavAuth);

@@ -30,7 +30,31 @@
                 <li><a href="#" onclick="loadPage('map')" data-page="map" class="nav-link">Map</a></li>
                 <li><a href="#" onclick="loadPage('ourstory')" data-page="ourstory" class="nav-link">Our Story</a></li>
                 <li><a href="#" onclick="loadPage('contact')" data-page="contact" class="nav-link">Contact</a></li>
+
+
             </ul>
+            <!-- ── Auth Buttons ── -->
+            <div class="nav-auth-btns" id="nav-auth-btns">
+
+                <!-- Logged OUT state -->
+                <div id="auth-out" style="display:flex; gap:10px; align-items:center;">
+                    <button class="btn-login" onclick="window.location.href='pages/login&signup.html'">
+                        Log In
+                    </button>
+                    <button class="btn-signup" onclick="window.location.href='pages/login&signup.html'">
+                        Sign Up
+                    </button>
+                </div>
+
+                <!-- Logged IN state -->
+                <div id="auth-in" style="display:none; gap:10px; align-items:center;">
+                    <span class="nav-user-name" id="nav-user-name"></span>
+                    <button class="btn-logout" onclick="logoutUser()">
+                        Log Out
+                    </button>
+                </div>
+
+            </div>
         </nav>
     </header>
 
@@ -351,80 +375,90 @@
         </div><!-- /page-map -->
 
 
-    <!-- ─── PAGE: OUR STORY ─── -->
-    <div id="page-ourstory" class="page">
-    
-        <div class="page-header-banner story-banner">
-            <h1>Our Story</h1>
-            <p>The people behind Explore Sri Lanka</p>
-        </div>
-    
-        <div class="info-page-content story-content">
-    
-            <!-- ABOUT -->
-            <div class="story-text">
-                <h2>About Explore Sri Lanka</h2>
-                <p>Explore Sri Lanka was created with a passion to showcase the beauty, culture, and natural wonders of
-                    Sri Lanka to travelers from around the world. Our platform was built to help visitors discover the
-                    island's most breathtaking destinations from ancient heritage sites and sacred temples to golden
-                    beaches, misty mountains, and vibrant wildlife parks. We believe that travel is more than just
-                    visiting places; it is about experiencing cultures, creating memories, and discovering the unique
-                    stories that every destination holds.</p>
-                <p>Through our website, we provide helpful information, travel inspiration, and destination guides that
-                    allow travelers to plan their journeys easily. Whether you are looking for adventure, relaxation,
-                    cultural experiences, or scenic landscapes, Explore Sri Lanka connects you with the best locations
-                    across the island.</p>
-    
-                <h2>Born from a Love of Sri Lanka</h2>
-                <p>Explore Sri Lanka was founded by a group of passionate travelers and locals who wanted to share the
-                    true beauty of our island paradise with the world. We believe every visitor deserves an authentic,
-                    unforgettable experience.</p>
-                <p>From the misty highlands of Nuwara Eliya to the ancient rock fortresses of the Cultural Triangle,
-                    we've walked every path and tasted every dish to bring you the most accurate, heartfelt guide to
-                    our home.</p>
+        <!-- ─── PAGE: OUR STORY ─── -->
+        <div id="page-ourstory" class="page">
+
+            <div class="page-header-banner story-banner">
+                <h1>Our Story</h1>
+                <p>The people behind Explore Sri Lanka</p>
             </div>
-    
-            <!-- VISION & MISSION -->
-            <div class="story-vm-section">
-                <div class="story-vm-box">
-                    <h3>Our Vision</h3>
-                    <p>To become the leading travel inspiration platform that introduces the beauty, heritage, and
-                        natural wonders of Sri Lanka to the world, encouraging sustainable tourism and unforgettable
-                        travel experiences.</p>
+
+            <div class="info-page-content story-content">
+
+                <!-- ABOUT -->
+                <div class="story-text">
+                    <h2>About Explore Sri Lanka</h2>
+                    <p>Explore Sri Lanka was created with a passion to showcase the beauty, culture, and natural wonders
+                        of
+                        Sri Lanka to travelers from around the world. Our platform was built to help visitors discover
+                        the
+                        island's most breathtaking destinations from ancient heritage sites and sacred temples to golden
+                        beaches, misty mountains, and vibrant wildlife parks. We believe that travel is more than just
+                        visiting places; it is about experiencing cultures, creating memories, and discovering the
+                        unique
+                        stories that every destination holds.</p>
+                    <p>Through our website, we provide helpful information, travel inspiration, and destination guides
+                        that
+                        allow travelers to plan their journeys easily. Whether you are looking for adventure,
+                        relaxation,
+                        cultural experiences, or scenic landscapes, Explore Sri Lanka connects you with the best
+                        locations
+                        across the island.</p>
+
+                    <h2>Born from a Love of Sri Lanka</h2>
+                    <p>Explore Sri Lanka was founded by a group of passionate travelers and locals who wanted to share
+                        the
+                        true beauty of our island paradise with the world. We believe every visitor deserves an
+                        authentic,
+                        unforgettable experience.</p>
+                    <p>From the misty highlands of Nuwara Eliya to the ancient rock fortresses of the Cultural Triangle,
+                        we've walked every path and tasted every dish to bring you the most accurate, heartfelt guide to
+                        our home.</p>
                 </div>
-                <div class="story-vm-box">
-                    <h3>Our Mission</h3>
-                    <p>To connect travelers with the real Sri Lanka — its people, culture, nature, and history — while
-                        promoting responsible and sustainable tourism that benefits local communities.</p>
+
+                <!-- VISION & MISSION -->
+                <div class="story-vm-section">
+                    <div class="story-vm-box">
+                        <h3>Our Vision</h3>
+                        <p>To become the leading travel inspiration platform that introduces the beauty, heritage, and
+                            natural wonders of Sri Lanka to the world, encouraging sustainable tourism and unforgettable
+                            travel experiences.</p>
+                    </div>
+                    <div class="story-vm-box">
+                        <h3>Our Mission</h3>
+                        <p>To connect travelers with the real Sri Lanka — its people, culture, nature, and history —
+                            while
+                            promoting responsible and sustainable tourism that benefits local communities.</p>
+                    </div>
                 </div>
+
+                <!-- SERVICES -->
+                <section class="services">
+                    <h2>Our Services</h2>
+                    <div class="service-grid">
+                        <div class="service">
+                            <h4>Destination Guides</h4>
+                            <p>Discover Sri Lanka's most beautiful places including beaches, mountains, and heritage
+                                sites.</p>
+                        </div>
+                        <div class="service">
+                            <h4>Travel Tips</h4>
+                            <p>Helpful information about transportation, culture, weather, and travel safety.</p>
+                        </div>
+                        <div class="service">
+                            <h4>Hotel Booking</h4>
+                            <p>Find comfortable hotels and resorts across Sri Lanka for every type of traveler.</p>
+                        </div>
+                        <div class="service">
+                            <h4>Travel Inspiration</h4>
+                            <p>Explore travel stories, photos, and experiences that inspire your next adventure.</p>
+                        </div>
+                    </div>
+                </section>
+
             </div>
-    
-            <!-- SERVICES -->
-            <section class="services">
-                <h2>Our Services</h2>
-                <div class="service-grid">
-                    <div class="service">
-                        <h4>Destination Guides</h4>
-                        <p>Discover Sri Lanka's most beautiful places including beaches, mountains, and heritage sites.</p>
-                    </div>
-                    <div class="service">
-                        <h4>Travel Tips</h4>
-                        <p>Helpful information about transportation, culture, weather, and travel safety.</p>
-                    </div>
-                    <div class="service">
-                        <h4>Hotel Booking</h4>
-                        <p>Find comfortable hotels and resorts across Sri Lanka for every type of traveler.</p>
-                    </div>
-                    <div class="service">
-                        <h4>Travel Inspiration</h4>
-                        <p>Explore travel stories, photos, and experiences that inspire your next adventure.</p>
-                    </div>
-                </div>
-            </section>
-    
-        </div>
-    </div><!-- /page-ourstory -->
-        
+        </div><!-- /page-ourstory -->
+
 
         <!-- ─── PAGE: CONTACT ─── -->
         <div id="page-contact" class="page">
@@ -497,7 +531,7 @@
             </div>
 
         </div>
-        
+
     </footer>
 
     <script src="script.js"></script>

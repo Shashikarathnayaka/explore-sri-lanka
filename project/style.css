@@ -40,14 +40,9 @@ a {
     background: rgba(0, 0, 0, 0.85);
 }
 
-.navbar::after {
-    content: "";
-    flex: 1;
-}
-
 /* ── Logo ── */
 .logo-container {
-    flex: 1;
+    flex-shrink: 0;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -315,6 +310,7 @@ a {
 
 .gold {
     background: linear-gradient(45deg, #ecaff4, #940249, #050263, #01951a, #cdf993);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -1167,4 +1163,75 @@ a {
     .destination-container {
         padding: 20px;
     }
+}
+
+/* ── Navbar Auth Buttons ── */
+.nav-auth-btns {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+}
+
+.btn-login {
+    padding: 8px 20px;
+    border: 1.5px solid rgba(255, 255, 255, 0.45);
+    background: transparent;
+    color: white;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.25s;
+    white-space: nowrap;
+}
+
+.btn-login:hover {
+    border-color: white;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.btn-signup {
+    padding: 8px 20px;
+    border: none;
+    background: #f4a62a;
+    color: #000;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.25s;
+    white-space: nowrap;
+}
+
+.btn-signup:hover {
+    background: #ffc142;
+    transform: scale(1.04);
+}
+
+.btn-logout {
+    padding: 7px 16px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: transparent;
+    color: white;
+    border-radius: 20px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.btn-logout:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.nav-user-name {
+    color: #f4a62a;
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.nav-user-name::before {
+    content: "✈️ ";
 }
