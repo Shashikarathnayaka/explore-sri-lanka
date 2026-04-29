@@ -4,6 +4,8 @@
 <head>
     <title>Explore Sri Lanka - Home</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="hotels.css">
+    <link rel="stylesheet" href="cultural-events.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,7 +14,7 @@
 <body>
 
     <!-- ══════════════════════════════════════
-         NAVBAR  (never changes)
+         NAVBAR
     ══════════════════════════════════════ -->
     <header>
         <nav class="navbar" id="navbar">
@@ -30,37 +32,20 @@
                 <li><a href="#" onclick="loadPage('map')" data-page="map" class="nav-link">Map</a></li>
                 <li><a href="#" onclick="loadPage('ourstory')" data-page="ourstory" class="nav-link">Our Story</a></li>
                 <li><a href="#" onclick="loadPage('contact')" data-page="contact" class="nav-link">Contact</a></li>
-
-
             </ul>
-            <!-- ── Auth Buttons ── -->
             <div class="nav-auth-btns" id="nav-auth-btns">
-
-                <!-- Logged OUT state -->
                 <div id="auth-out" style="display:flex; gap:10px; align-items:center;">
-                    <button class="btn-login" onclick="window.location.href='pages/login&signup.html'">
-                        Log In
-                    </button>
-                    <button class="btn-signup" onclick="window.location.href='pages/login&signup.html'">
-                        Sign Up
-                    </button>
+                    <button class="btn-login" onclick="window.location.href='pages/login&signup.html'">Log In</button>
+                    <button class="btn-signup" onclick="window.location.href='pages/login&signup.html'">Sign Up</button>
                 </div>
-
-                <!-- Logged IN state -->
                 <div id="auth-in" style="display:none; gap:10px; align-items:center;">
                     <span class="nav-user-name" id="nav-user-name"></span>
-                    <button class="btn-logout" onclick="logoutUser()">
-                        Log Out
-                    </button>
+                    <button class="btn-logout" onclick="logoutUser()">Log Out</button>
                 </div>
-
             </div>
         </nav>
     </header>
 
-    <!-- ══════════════════════════════════════
-         MAIN CONTENT AREA  (only this changes)
-    ══════════════════════════════════════ -->
     <main id="main-content">
 
         <!-- ─── PAGE: HOME ─── -->
@@ -135,6 +120,661 @@
                 </div>
             </section>
 
+            <!-- HOTELS SECTION -->
+            <section class="hotels-section" id="hotels-section">
+
+                <div class="hotels-header">
+                    <h2>Find Hotels</h2>
+                    <p>Search hotels by destination across Sri Lanka</p>
+                </div>
+
+                <!-- HOTEL LOCATION FILTER BAR -->
+                <div class="hotel-search-bar">
+                    <div class="hotel-search-input-wrap">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="hotelSearchInput"
+                            placeholder="Search by location (e.g. Ella, Galle, Kandy...)" oninput="filterHotels()"
+                            autocomplete="off">
+                        <button class="hotel-search-clear" id="hotelClearBtn" onclick="clearHotelSearch()"
+                            title="Clear">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
+
+                    <!-- LOCATION PILLS -->
+                    <div class="hotel-location-pills">
+                        <button class="pill active" data-loc="all" onclick="setPillFilter(this,'all')">All</button>
+                        <button class="pill" data-loc="sigiriya" onclick="setPillFilter(this,'sigiriya')">🏔
+                            Sigiriya</button>
+                        <button class="pill" data-loc="ella" onclick="setPillFilter(this,'ella')">🌿 Ella</button>
+                        <button class="pill" data-loc="mirissa" onclick="setPillFilter(this,'mirissa')">🌊
+                            Mirissa</button>
+                        <button class="pill" data-loc="kandy" onclick="setPillFilter(this,'kandy')">🏛 Kandy</button>
+                        <button class="pill" data-loc="galle" onclick="setPillFilter(this,'galle')">🏰 Galle</button>
+                        <button class="pill" data-loc="yala" onclick="setPillFilter(this,'yala')">🐆 Yala</button>
+                    </div>
+                </div>
+
+                <!-- RESULTS COUNT -->
+                <div class="hotel-results-meta">
+                    <span id="hotelResultCount">Showing all hotels</span>
+                </div>
+
+                <!-- HOTEL CARDS GRID -->
+                <div class="hotel-grid" id="hotelGrid">
+
+                    <!-- ── Sigiriya ── -->
+                    <div class="hotel-card" data-location="sigiriya">
+                        <div class="hotel-img-wrap">
+                            <img src="images/hero-sri-lanka.jpg" alt="Sigiriya Village Hotel">
+                            <span class="hotel-badge">⭐ Top Pick</span>
+                            <span class="hotel-location-tag"><i class="fa-solid fa-location-dot"></i> Sigiriya</span>
+                        </div>
+                        <div class="hotel-info">
+                            <h3>Sigiriya Village Hotel</h3>
+                            <div class="hotel-stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                            </div>
+                            <p class="hotel-desc">Eco-friendly resort surrounded by jungle, offering stunning views of
+                                Sigiriya Rock.</p>
+                            <div class="hotel-amenities">
+                                <span><i class="fa-solid fa-wifi"></i> WiFi</span>
+                                <span><i class="fa-solid fa-swimming-pool"></i> Pool</span>
+                                <span><i class="fa-solid fa-utensils"></i> Restaurant</span>
+                            </div>
+                            <div class="hotel-footer">
+                                <div class="hotel-price">
+                                    <span class="price-from">From</span>
+                                    <span class="price-amt">$85</span>
+                                    <span class="price-night">/night</span>
+                                </div>
+                                <button class="hotel-book-btn" onclick="bookHotel('Sigiriya Village Hotel')">Book
+                                    Now</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hotel-card" data-location="sigiriya">
+                        <div class="hotel-img-wrap">
+                            <img src="images/hero-sri-lanka.jpg" alt="Water Garden Sigiriya">
+                            <span class="hotel-location-tag"><i class="fa-solid fa-location-dot"></i> Sigiriya</span>
+                        </div>
+                        <div class="hotel-info">
+                            <h3>Water Garden Sigiriya</h3>
+                            <div class="hotel-stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="hotel-desc">Luxury boutique hotel with private plunge pools and serene garden
+                                settings.</p>
+                            <div class="hotel-amenities">
+                                <span><i class="fa-solid fa-wifi"></i> WiFi</span>
+                                <span><i class="fa-solid fa-spa"></i> Spa</span>
+                                <span><i class="fa-solid fa-car"></i> Transfers</span>
+                            </div>
+                            <div class="hotel-footer">
+                                <div class="hotel-price">
+                                    <span class="price-from">From</span>
+                                    <span class="price-amt">$210</span>
+                                    <span class="price-night">/night</span>
+                                </div>
+                                <button class="hotel-book-btn" onclick="bookHotel('Water Garden Sigiriya')">Book
+                                    Now</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ── Ella ── -->
+                    <div class="hotel-card" data-location="ella">
+                        <div class="hotel-img-wrap">
+                            <img src="images/ella.jpg" alt="98 Acres Resort">
+                            <span class="hotel-badge">⭐ Top Pick</span>
+                            <span class="hotel-location-tag"><i class="fa-solid fa-location-dot"></i> Ella</span>
+                        </div>
+                        <div class="hotel-info">
+                            <h3>98 Acres Resort</h3>
+                            <div class="hotel-stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="hotel-desc">Panoramic hilltop resort overlooking lush tea estates and the famous
+                                Nine Arch Bridge.</p>
+                            <div class="hotel-amenities">
+                                <span><i class="fa-solid fa-wifi"></i> WiFi</span>
+                                <span><i class="fa-solid fa-swimming-pool"></i> Pool</span>
+                                <span><i class="fa-solid fa-mountain"></i> Trekking</span>
+                            </div>
+                            <div class="hotel-footer">
+                                <div class="hotel-price">
+                                    <span class="price-from">From</span>
+                                    <span class="price-amt">$145</span>
+                                    <span class="price-night">/night</span>
+                                </div>
+                                <button class="hotel-book-btn" onclick="bookHotel('98 Acres Resort')">Book Now</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hotel-card" data-location="ella">
+                        <div class="hotel-img-wrap">
+                            <img src="images/ella.jpg" alt="Ella Jungle Resort">
+                            <span class="hotel-location-tag"><i class="fa-solid fa-location-dot"></i> Ella</span>
+                        </div>
+                        <div class="hotel-info">
+                            <h3>Ella Jungle Resort</h3>
+                            <div class="hotel-stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                            </div>
+                            <p class="hotel-desc">Charming bungalows nestled in a forested hillside with cool mountain
+                                air.</p>
+                            <div class="hotel-amenities">
+                                <span><i class="fa-solid fa-wifi"></i> WiFi</span>
+                                <span><i class="fa-solid fa-utensils"></i> Restaurant</span>
+                                <span><i class="fa-solid fa-leaf"></i> Garden</span>
+                            </div>
+                            <div class="hotel-footer">
+                                <div class="hotel-price">
+                                    <span class="price-from">From</span>
+                                    <span class="price-amt">$60</span>
+                                    <span class="price-night">/night</span>
+                                </div>
+                                <button class="hotel-book-btn" onclick="bookHotel('Ella Jungle Resort')">Book
+                                    Now</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ── Mirissa ── -->
+                    <div class="hotel-card" data-location="mirissa">
+                        <div class="hotel-img-wrap">
+                            <img src="images/mirs.jpg" alt="Mirissa Hills Hotel">
+                            <span class="hotel-badge">🌊 Beachfront</span>
+                            <span class="hotel-location-tag"><i class="fa-solid fa-location-dot"></i> Mirissa</span>
+                        </div>
+                        <div class="hotel-info">
+                            <h3>Mirissa Hills Hotel</h3>
+                            <div class="hotel-stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="hotel-desc">Stunning hilltop hotel with infinity pool and sweeping ocean views
+                                over Mirissa Bay.</p>
+                            <div class="hotel-amenities">
+                                <span><i class="fa-solid fa-wifi"></i> WiFi</span>
+                                <span><i class="fa-solid fa-swimming-pool"></i> Pool</span>
+                                <span><i class="fa-solid fa-umbrella-beach"></i> Beach</span>
+                            </div>
+                            <div class="hotel-footer">
+                                <div class="hotel-price">
+                                    <span class="price-from">From</span>
+                                    <span class="price-amt">$120</span>
+                                    <span class="price-night">/night</span>
+                                </div>
+                                <button class="hotel-book-btn" onclick="bookHotel('Mirissa Hills Hotel')">Book
+                                    Now</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hotel-card" data-location="mirissa">
+                        <div class="hotel-img-wrap">
+                            <img src="images/mirs.jpg" alt="Weligama Bay Resort">
+                            <span class="hotel-location-tag"><i class="fa-solid fa-location-dot"></i> Mirissa</span>
+                        </div>
+                        <div class="hotel-info">
+                            <h3>Weligama Bay Resort</h3>
+                            <div class="hotel-stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                            </div>
+                            <p class="hotel-desc">Relaxed beachside resort perfect for whale watching excursions and
+                                surfing.</p>
+                            <div class="hotel-amenities">
+                                <span><i class="fa-solid fa-wifi"></i> WiFi</span>
+                                <span><i class="fa-solid fa-person-swimming"></i> Surfing</span>
+                                <span><i class="fa-solid fa-utensils"></i> Seafood</span>
+                            </div>
+                            <div class="hotel-footer">
+                                <div class="hotel-price">
+                                    <span class="price-from">From</span>
+                                    <span class="price-amt">$75</span>
+                                    <span class="price-night">/night</span>
+                                </div>
+                                <button class="hotel-book-btn" onclick="bookHotel('Weligama Bay Resort')">Book
+                                    Now</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ── Kandy ── -->
+                    <div class="hotel-card" data-location="kandy">
+                        <div class="hotel-img-wrap">
+                            <img src="images/maligawa.jpg" alt="The Kandy House">
+                            <span class="hotel-badge">🏛 Heritage</span>
+                            <span class="hotel-location-tag"><i class="fa-solid fa-location-dot"></i> Kandy</span>
+                        </div>
+                        <div class="hotel-info">
+                            <h3>The Kandy House</h3>
+                            <div class="hotel-stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="hotel-desc">A restored 200-year-old manor house offering authentic Sri Lankan
+                                heritage experience.</p>
+                            <div class="hotel-amenities">
+                                <span><i class="fa-solid fa-wifi"></i> WiFi</span>
+                                <span><i class="fa-solid fa-spa"></i> Spa</span>
+                                <span><i class="fa-solid fa-landmark"></i> Heritage</span>
+                            </div>
+                            <div class="hotel-footer">
+                                <div class="hotel-price">
+                                    <span class="price-from">From</span>
+                                    <span class="price-amt">$185</span>
+                                    <span class="price-night">/night</span>
+                                </div>
+                                <button class="hotel-book-btn" onclick="bookHotel('The Kandy House')">Book Now</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hotel-card" data-location="kandy">
+                        <div class="hotel-img-wrap">
+                            <img src="images/maligawa.jpg" alt="Earl's Regency Kandy">
+                            <span class="hotel-location-tag"><i class="fa-solid fa-location-dot"></i> Kandy</span>
+                        </div>
+                        <div class="hotel-info">
+                            <h3>Earl's Regency Hotel</h3>
+                            <div class="hotel-stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                            </div>
+                            <p class="hotel-desc">Nestled on a hillside, this hotel offers stunning valley views near
+                                the Temple of the Tooth.</p>
+                            <div class="hotel-amenities">
+                                <span><i class="fa-solid fa-wifi"></i> WiFi</span>
+                                <span><i class="fa-solid fa-swimming-pool"></i> Pool</span>
+                                <span><i class="fa-solid fa-car"></i> Transfers</span>
+                            </div>
+                            <div class="hotel-footer">
+                                <div class="hotel-price">
+                                    <span class="price-from">From</span>
+                                    <span class="price-amt">$95</span>
+                                    <span class="price-night">/night</span>
+                                </div>
+                                <button class="hotel-book-btn" onclick="bookHotel('Earl\'s Regency Hotel')">Book
+                                    Now</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ── Galle ── -->
+                    <div class="hotel-card" data-location="galle">
+                        <div class="hotel-img-wrap">
+                            <img src="images/ella.jpg" alt="Amangalla Fort Hotel">
+                            <span class="hotel-badge">🏰 Luxury</span>
+                            <span class="hotel-location-tag"><i class="fa-solid fa-location-dot"></i> Galle</span>
+                        </div>
+                        <div class="hotel-info">
+                            <h3>Amangalla Fort Hotel</h3>
+                            <div class="hotel-stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="hotel-desc">Iconic colonial hotel inside the UNESCO Galle Fort, with timeless
+                                Dutch colonial architecture.</p>
+                            <div class="hotel-amenities">
+                                <span><i class="fa-solid fa-wifi"></i> WiFi</span>
+                                <span><i class="fa-solid fa-spa"></i> Spa</span>
+                                <span><i class="fa-solid fa-swimming-pool"></i> Pool</span>
+                            </div>
+                            <div class="hotel-footer">
+                                <div class="hotel-price">
+                                    <span class="price-from">From</span>
+                                    <span class="price-amt">$350</span>
+                                    <span class="price-night">/night</span>
+                                </div>
+                                <button class="hotel-book-btn" onclick="bookHotel('Amangalla Fort Hotel')">Book
+                                    Now</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hotel-card" data-location="galle">
+                        <div class="hotel-img-wrap">
+                            <img src="images/ella.jpg" alt="Fort Bazaar Boutique">
+                            <span class="hotel-location-tag"><i class="fa-solid fa-location-dot"></i> Galle</span>
+                        </div>
+                        <div class="hotel-info">
+                            <h3>Fort Bazaar Boutique</h3>
+                            <div class="hotel-stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                            </div>
+                            <p class="hotel-desc">Stylish boutique hotel in a restored colonial building within the
+                                heart of Galle Fort.</p>
+                            <div class="hotel-amenities">
+                                <span><i class="fa-solid fa-wifi"></i> WiFi</span>
+                                <span><i class="fa-solid fa-utensils"></i> Restaurant</span>
+                                <span><i class="fa-solid fa-bicycle"></i> Cycling</span>
+                            </div>
+                            <div class="hotel-footer">
+                                <div class="hotel-price">
+                                    <span class="price-from">From</span>
+                                    <span class="price-amt">$130</span>
+                                    <span class="price-night">/night</span>
+                                </div>
+                                <button class="hotel-book-btn" onclick="bookHotel('Fort Bazaar Boutique')">Book
+                                    Now</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ── Yala ── -->
+                    <div class="hotel-card" data-location="yala">
+                        <div class="hotel-img-wrap">
+                            <img src="images/hero-sri-lanka.jpg" alt="Chena Huts by Uga">
+                            <span class="hotel-badge">🐆 Safari</span>
+                            <span class="hotel-location-tag"><i class="fa-solid fa-location-dot"></i> Yala</span>
+                        </div>
+                        <div class="hotel-info">
+                            <h3>Chena Huts by Uga</h3>
+                            <div class="hotel-stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="hotel-desc">Exclusive tented camp on the edge of Yala National Park for an
+                                immersive wildlife experience.</p>
+                            <div class="hotel-amenities">
+                                <span><i class="fa-solid fa-wifi"></i> WiFi</span>
+                                <span><i class="fa-solid fa-paw"></i> Safari</span>
+                                <span><i class="fa-solid fa-swimming-pool"></i> Pool</span>
+                            </div>
+                            <div class="hotel-footer">
+                                <div class="hotel-price">
+                                    <span class="price-from">From</span>
+                                    <span class="price-amt">$275</span>
+                                    <span class="price-night">/night</span>
+                                </div>
+                                <button class="hotel-book-btn" onclick="bookHotel('Chena Huts by Uga')">Book
+                                    Now</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hotel-card" data-location="yala">
+                        <div class="hotel-img-wrap">
+                            <img src="images/hero-sri-lanka.jpg" alt="Yala Safari Camp">
+                            <span class="hotel-location-tag"><i class="fa-solid fa-location-dot"></i> Yala</span>
+                        </div>
+                        <div class="hotel-info">
+                            <h3>Yala Safari Camp</h3>
+                            <div class="hotel-stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                            </div>
+                            <p class="hotel-desc">Comfortable glamping tents near park gates with guided leopard and
+                                elephant safaris.</p>
+                            <div class="hotel-amenities">
+                                <span><i class="fa-solid fa-wifi"></i> WiFi</span>
+                                <span><i class="fa-solid fa-paw"></i> Safari</span>
+                                <span><i class="fa-solid fa-campground"></i> Glamping</span>
+                            </div>
+                            <div class="hotel-footer">
+                                <div class="hotel-price">
+                                    <span class="price-from">From</span>
+                                    <span class="price-amt">$95</span>
+                                    <span class="price-night">/night</span>
+                                </div>
+                                <button class="hotel-book-btn" onclick="bookHotel('Yala Safari Camp')">Book Now</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div><!-- /hotel-grid -->
+
+                <!-- NO RESULTS MESSAGE -->
+                <div class="hotel-no-results" id="hotelNoResults" style="display:none;">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <h3>No hotels found</h3>
+                    <p>Try searching for Sigiriya, Ella, Mirissa, Kandy, Galle or Yala</p>
+                    <button onclick="clearHotelSearch()">Show All Hotels</button>
+                </div>
+
+                <!-- BOOKING CONFIRMATION MODAL -->
+                <div class="hotel-modal-overlay" id="hotelModal" onclick="closeHotelModal(event)">
+                    <div class="hotel-modal">
+                        <button class="modal-close-btn" onclick="closeHotelModal()"><i
+                                class="fa-solid fa-xmark"></i></button>
+                        <div class="modal-icon"><i class="fa-solid fa-calendar-check"></i></div>
+                        <h3 id="modalHotelName">Hotel Name</h3>
+                        <p>Your booking request has been received! Our team will contact you shortly to confirm your
+                            reservation.</p>
+                        <div class="modal-details">
+                            <div><i class="fa-solid fa-envelope"></i> Confirmation sent to your email</div>
+                            <div><i class="fa-solid fa-phone"></i> We'll call within 24 hours</div>
+                        </div>
+                        <button class="modal-ok-btn" onclick="closeHotelModal()">Got it!</button>
+                    </div>
+                </div>
+
+            </section>
+            <!-- /hotels-section -->
+
+            <!-- ════════════════════════════════════
+                 CULTURAL EVENTS SECTION (NEW)
+                 Placed above the Gallery section
+            ════════════════════════════════════ -->
+            <section class="cultural-events-section" id="cultural-events-section">
+
+                <div class="cultural-events-header">
+                    <h2>Cultural <span>Events</span></h2>
+                    <p>Experience the vibrant festivals and traditions of Sri Lanka</p>
+                </div>
+
+                <!-- FILTER TABS -->
+                <div class="events-filter-tabs">
+                    <button class="tab-btn active" onclick="setEventFilter(this,'all')">🎉 All Events</button>
+                    <button class="tab-btn" onclick="setEventFilter(this,'festival')">🎊 Festivals</button>
+                    <button class="tab-btn" onclick="setEventFilter(this,'religious')">🙏 Religious</button>
+                    <button class="tab-btn" onclick="setEventFilter(this,'cultural')">🎭 Cultural</button>
+                    <button class="tab-btn" onclick="setEventFilter(this,'sport')">🏄 Sports</button>
+                </div>
+
+                <!-- EVENTS GRID -->
+                <div class="events-grid" id="eventsGrid">
+
+                    <!-- Esala Perahera -->
+                    <div class="event-card" data-category="religious" onclick="openEventModal(1)">
+                        <div class="event-img-wrap">
+                            <img src="images/maligawa.jpg" alt="Esala Perahera">
+                            <span class="event-category-tag tag-religious">Religious</span>
+                            <div class="event-date-badge">
+                                <span class="date-day">19</span>
+                                <span class="date-month">Aug</span>
+                            </div>
+                        </div>
+                        <div class="event-info">
+                            <h3>Esala Perahera</h3>
+                            <div class="event-meta">
+                                <span><i class="fa-solid fa-location-dot"></i> Kandy</span>
+                                <span><i class="fa-solid fa-clock"></i> 10 Days</span>
+                            </div>
+                            <p class="event-desc">Sri Lanka's grandest and most sacred procession celebrating the Sacred
+                                Tooth Relic.</p>
+                            <div class="event-footer">
+                                <span class="event-status status-upcoming">Upcoming</span>
+                                <button class="event-learn-btn">Learn More →</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sinhala & Tamil New Year -->
+                    <div class="event-card" data-category="festival" onclick="openEventModal(2)">
+                        <div class="event-img-wrap">
+                            <img src="images/hero-sri-lanka.jpg" alt="Sinhala Tamil New Year">
+                            <span class="event-category-tag tag-festival">Festival</span>
+                            <div class="event-date-badge">
+                                <span class="date-day">13</span>
+                                <span class="date-month">Apr</span>
+                            </div>
+                        </div>
+                        <div class="event-info">
+                            <h3>Sinhala &amp; Tamil New Year</h3>
+                            <div class="event-meta">
+                                <span><i class="fa-solid fa-location-dot"></i> Island-Wide</span>
+                                <span><i class="fa-solid fa-clock"></i> 2 Days</span>
+                            </div>
+                            <p class="event-desc">The most celebrated national festival marking the traditional new
+                                year.</p>
+                            <div class="event-footer">
+                                <span class="event-status status-upcoming">Upcoming</span>
+                                <button class="event-learn-btn">Learn More →</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Vesak Festival -->
+                    <div class="event-card" data-category="religious" onclick="openEventModal(3)">
+                        <div class="event-img-wrap">
+                            <img src="images/maligawa.jpg" alt="Vesak Festival">
+                            <span class="event-category-tag tag-religious">Religious</span>
+                            <div class="event-date-badge">
+                                <span class="date-day">12</span>
+                                <span class="date-month">May</span>
+                            </div>
+                        </div>
+                        <div class="event-info">
+                            <h3>Vesak Festival</h3>
+                            <div class="event-meta">
+                                <span><i class="fa-solid fa-location-dot"></i> Island-Wide</span>
+                                <span><i class="fa-solid fa-clock"></i> 2 Days</span>
+                            </div>
+                            <p class="event-desc">The most important Buddhist festival illuminating the island with
+                                lanterns and dansalas.</p>
+                            <div class="event-footer">
+                                <span class="event-status status-ongoing">🔴 Ongoing</span>
+                                <button class="event-learn-btn">Learn More →</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Galle Literary Festival -->
+                    <div class="event-card" data-category="cultural" onclick="openEventModal(4)">
+                        <div class="event-img-wrap">
+                            <img src="images/ella.jpg" alt="Galle Literary Festival">
+                            <span class="event-category-tag tag-cultural">Cultural</span>
+                            <div class="event-date-badge">
+                                <span class="date-day">23</span>
+                                <span class="date-month">Jan</span>
+                            </div>
+                        </div>
+                        <div class="event-info">
+                            <h3>Galle Literary Festival</h3>
+                            <div class="event-meta">
+                                <span><i class="fa-solid fa-location-dot"></i> Galle Fort</span>
+                                <span><i class="fa-solid fa-clock"></i> 5 Days</span>
+                            </div>
+                            <p class="event-desc">A world-class literary festival held inside the historic UNESCO Galle
+                                Fort.</p>
+                            <div class="event-footer">
+                                <span class="event-status status-upcoming">Upcoming</span>
+                                <button class="event-learn-btn">Learn More →</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Arugam Bay Surf Festival -->
+                    <div class="event-card" data-category="sport" onclick="openEventModal(5)">
+                        <div class="event-img-wrap">
+                            <img src="images/mirs.jpg" alt="Arugam Bay Surf Festival">
+                            <span class="event-category-tag tag-sport">Sport</span>
+                            <div class="event-date-badge">
+                                <span class="date-day">15</span>
+                                <span class="date-month">Jul</span>
+                            </div>
+                        </div>
+                        <div class="event-info">
+                            <h3>Arugam Bay Surf Festival</h3>
+                            <div class="event-meta">
+                                <span><i class="fa-solid fa-location-dot"></i> Arugam Bay</span>
+                                <span><i class="fa-solid fa-clock"></i> 3 Days</span>
+                            </div>
+                            <p class="event-desc">International surf competition on one of the world's top point breaks.
+                            </p>
+                            <div class="event-footer">
+                                <span class="event-status status-upcoming">Upcoming</span>
+                                <button class="event-learn-btn">Learn More →</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Navam Perahera -->
+                    <div class="event-card" data-category="religious" onclick="openEventModal(6)">
+                        <div class="event-img-wrap">
+                            <img src="images/hero-sri-lanka.jpg" alt="Navam Perahera">
+                            <span class="event-category-tag tag-religious">Religious</span>
+                            <div class="event-date-badge">
+                                <span class="date-day">11</span>
+                                <span class="date-month">Feb</span>
+                            </div>
+                        </div>
+                        <div class="event-info">
+                            <h3>Navam Perahera</h3>
+                            <div class="event-meta">
+                                <span><i class="fa-solid fa-location-dot"></i> Colombo</span>
+                                <span><i class="fa-solid fa-clock"></i> 2 Nights</span>
+                            </div>
+                            <p class="event-desc">Colombo's spectacular full-moon procession with over 50 elephants.</p>
+                            <div class="event-footer">
+                                <span class="event-status status-upcoming">Upcoming</span>
+                                <button class="event-learn-btn">Learn More →</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div><!-- /events-grid -->
+
+                <!-- NO RESULTS -->
+                <div class="events-no-results" id="eventsNoResults">
+                    <i class="fa-solid fa-calendar-xmark"></i>
+                    <h3>No events found for this category</h3>
+                </div>
+
+                <!-- EVENT DETAIL MODAL -->
+                <div class="event-modal-overlay" id="eventModal" onclick="closeEventModal(event)">
+                    <div class="event-modal">
+                        <button class="event-modal-close" onclick="closeEventModalBtn()">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                        <span class="modal-cat-tag" id="modalEventCatTag"></span>
+                        <h2 id="modalEventTitle"></h2>
+                        <div class="modal-meta">
+                            <div><i class="fa-solid fa-calendar"></i> <span id="modalEventDate"></span></div>
+                            <div><i class="fa-solid fa-location-dot"></i> <span id="modalEventLocation"></span></div>
+                            <div><i class="fa-solid fa-clock"></i> <span id="modalEventDuration"></span></div>
+                        </div>
+                        <p class="modal-desc" id="modalEventDesc"></p>
+                        <button class="modal-ok-btn" onclick="closeEventModalBtn()">Close</button>
+                    </div>
+                </div>
+
+            </section>
+            <!-- /cultural-events-section -->
+
             <!-- WHY VISIT -->
             <section class="features">
                 <h2>Why Visit Sri Lanka</h2>
@@ -163,129 +803,91 @@
                 <h1>Explore Destinations</h1>
                 <p>Discover the most breathtaking places Sri Lanka has to offer</p>
             </div>
-
             <div class="destination-container">
-
-                <div class="place">
+                <div class="place" onclick="showDetail('sigiriya')">
                     <img src="images/hero-sri-lanka.jpg" alt="Sigiriya">
                     <h3>Sigiriya</h3>
-                    <p>The legendary Lion Rock fortress rising 200m above the jungle. A UNESCO World Heritage Site with
-                        ancient frescoes and mirror wall.</p>
-                    <div class="stars">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                        <i class="fa-regular fa-star"></i>
-                    </div>
+                    <p>The legendary Lion Rock fortress rising 200m above the jungle.</p>
+                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-regular fa-star"></i></div>
                     <div class="rating-text"><span class="score">4</span>/5</div>
                     <a href="https://maps.google.com/?q=Sigiriya" target="_blank"><button class="map-btn">📍 View on
                             Map</button></a>
-                    <div class="review-box">
-                        <input type="text" placeholder="Leave a review...">
-                        <button onclick="addComment(this)">Post</button>
-                    </div>
+                    <div class="review-box"><input type="text" placeholder="Leave a review..."><button
+                            onclick="addComment(this)">Post</button></div>
                     <div class="comments"></div>
                 </div>
-
-                <div class="place">
+                <div class="place" onclick="showDetail('Ella')">
                     <img src="images/ella.jpg" alt="Ella">
                     <h3>Ella</h3>
-                    <p>Iconic Nine Arch Bridge surrounded by lush tea plantations and stunning mountain panoramas in the
-                        Hill Country.</p>
-                    <div class="stars">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
+                    <p>Iconic Nine Arch Bridge surrounded by lush tea plantations.</p>
+                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i></div>
                     <div class="rating-text"><span class="score">5</span>/5</div>
                     <a href="https://maps.google.com/?q=Ella+Sri+Lanka" target="_blank"><button class="map-btn">📍 View
                             on Map</button></a>
-                    <div class="review-box">
-                        <input type="text" placeholder="Leave a review...">
-                        <button onclick="addComment(this)">Post</button>
-                    </div>
+                    <div class="review-box"><input type="text" placeholder="Leave a review..."><button
+                            onclick="addComment(this)">Post</button></div>
                     <div class="comments"></div>
                 </div>
-
-                <div class="place">
+                <div class="place" onclick="showDetail('Mirissa')">
                     <img src="images/mirs.jpg" alt="Mirissa">
                     <h3>Mirissa</h3>
-                    <p>Famous crescent beach ideal for whale watching, surfing, and incredible sunsets along the
-                        southern coast.</p>
-                    <div class="stars">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                        <i class="fa-regular fa-star"></i>
-                    </div>
+                    <p>Famous crescent beach ideal for whale watching and surfing.</p>
+                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-regular fa-star"></i></div>
                     <div class="rating-text"><span class="score">4</span>/5</div>
                     <a href="https://maps.google.com/?q=Mirissa+Beach" target="_blank"><button class="map-btn">📍 View
                             on Map</button></a>
-                    <div class="review-box">
-                        <input type="text" placeholder="Leave a review...">
-                        <button onclick="addComment(this)">Post</button>
-                    </div>
+                    <div class="review-box"><input type="text" placeholder="Leave a review..."><button
+                            onclick="addComment(this)">Post</button></div>
                     <div class="comments"></div>
                 </div>
-
-                <div class="place">
+                <div class="place" onclick="showDetail('Dalada Maligawa')">
                     <img src="images/maligawa.jpg" alt="Dalada Maligawa">
                     <h3>Sri Dalada Maligawa</h3>
-                    <p>Historic Temple of the Sacred Tooth Relic in the heart of Kandy - one of the most venerated
-                        Buddhist sites in Asia.</p>
-                    <div class="stars">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
+                    <p>Historic Temple of the Sacred Tooth Relic in the heart of Kandy.</p>
+                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i></div>
                     <div class="rating-text"><span class="score">5</span>/5</div>
                     <a href="https://maps.google.com/?q=Temple+of+the+Tooth+Kandy" target="_blank"><button
                             class="map-btn">📍 View on Map</button></a>
-                    <div class="review-box">
-                        <input type="text" placeholder="Leave a review...">
-                        <button onclick="addComment(this)">Post</button>
-                    </div>
+                    <div class="review-box"><input type="text" placeholder="Leave a review..."><button
+                            onclick="addComment(this)">Post</button></div>
                     <div class="comments"></div>
                 </div>
-
-                <div class="place">
+                <div class="place" onclick="showDetail('Yala National Park')">
                     <img src="images/hero-sri-lanka.jpg" alt="Yala National Park">
                     <h3>Yala National Park</h3>
-                    <p>Sri Lanka's most visited wildlife reserve, home to one of the highest densities of leopards in
-                        the world.</p>
-                    <div class="stars">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                        <i class="fa-regular fa-star"></i>
-                    </div>
+                    <p>Sri Lanka's most visited wildlife reserve, home to leopards.</p>
+                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-regular fa-star"></i></div>
                     <div class="rating-text"><span class="score">4</span>/5</div>
                     <a href="https://maps.google.com/?q=Yala+National+Park" target="_blank"><button class="map-btn">📍
                             View on Map</button></a>
-                    <div class="review-box">
-                        <input type="text" placeholder="Leave a review...">
-                        <button onclick="addComment(this)">Post</button>
-                    </div>
+                    <div class="review-box"><input type="text" placeholder="Leave a review..."><button
+                            onclick="addComment(this)">Post</button></div>
                     <div class="comments"></div>
                 </div>
-
-                <div class="place">
+                <div class="place" onclick="showDetail('Galle Fort')">
                     <img src="images/ella.jpg" alt="Galle Fort">
                     <h3>Galle Fort</h3>
-                    <p>A UNESCO World Heritage Dutch colonial fort on the southern tip of Sri Lanka, blending European
-                        and South Asian architecture.</p>
-                    <div class="stars">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
+                    <p>A UNESCO World Heritage Dutch colonial fort on the southern tip.</p>
+                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i></div>
                     <div class="rating-text"><span class="score">5</span>/5</div>
                     <a href="https://maps.google.com/?q=Galle+Fort" target="_blank"><button class="map-btn">📍 View on
                             Map</button></a>
-                    <div class="review-box">
-                        <input type="text" placeholder="Leave a review...">
-                        <button onclick="addComment(this)">Post</button>
-                    </div>
+                    <div class="review-box"><input type="text" placeholder="Leave a review..."><button
+                            onclick="addComment(this)">Post</button></div>
                     <div class="comments"></div>
                 </div>
-
             </div>
         </div><!-- /page-destinations -->
 
@@ -299,36 +901,30 @@
             <div class="info-page-content">
                 <div class="tip-card"><i class="fa-solid fa-passport"></i>
                     <h3>Visa</h3>
-                    <p>Most visitors can obtain an ETA (Electronic Travel Authorization) online before arrival. Valid
-                        for 30 days, extendable up to 6 months.</p>
+                    <p>Most visitors can obtain an ETA online. Valid for 30 days, extendable up to 6 months.</p>
                 </div>
                 <div class="tip-card"><i class="fa-solid fa-sun"></i>
                     <h3>Best Time to Visit</h3>
-                    <p>West & south coast: December–March. East coast & Cultural Triangle: May–September. Avurudu (New
-                        Year) in April is a wonderful cultural experience.</p>
+                    <p>West & south coast: December–March. East coast: May–September.</p>
                 </div>
                 <div class="tip-card"><i class="fa-solid fa-money-bill"></i>
                     <h3>Currency</h3>
-                    <p>Sri Lankan Rupee (LKR). ATMs are widely available. US Dollars and Euros are accepted at most
-                        tourist sites.</p>
+                    <p>Sri Lankan Rupee (LKR). ATMs widely available. USD/EUR accepted at tourist sites.</p>
                 </div>
                 <div class="tip-card"><i class="fa-solid fa-train"></i>
                     <h3>Getting Around</h3>
-                    <p>Scenic train rides through the Hill Country are a must. Tuk-tuks for short distances, buses are
-                        economical for long routes.</p>
+                    <p>Scenic train rides through the Hill Country are a must. Tuk-tuks for short distances.</p>
                 </div>
                 <div class="tip-card"><i class="fa-solid fa-shirt"></i>
                     <h3>Dress Code</h3>
-                    <p>Cover shoulders and knees when visiting temples. Bring light, breathable clothing for the coast
-                        and warmer layers for the hills.</p>
+                    <p>Cover shoulders and knees when visiting temples.</p>
                 </div>
                 <div class="tip-card"><i class="fa-solid fa-utensils"></i>
                     <h3>Food</h3>
-                    <p>Try rice & curry, kottu roti, hoppers, and fresh seafood. Street food is delicious but stick to
-                        busy stalls for safety.</p>
+                    <p>Try rice & curry, kottu roti, hoppers, and fresh seafood.</p>
                 </div>
             </div>
-        </div><!-- /page-traveltips -->
+        </div>
 
 
         <!-- ─── PAGE: GALLERY ─── -->
@@ -345,11 +941,173 @@
                 <div class="gallery-item"><img src="images/mirs.jpg" alt="Mirissa"><span>Mirissa Beach</span></div>
                 <div class="gallery-item"><img src="images/maligawa.jpg" alt="Kandy"><span>Temple of the Tooth</span>
                 </div>
-                <div class="gallery-item"><img src="images/hero-sri-lanka.jpg" alt="Wildlife"><span>Yala
-                        Wildlife</span></div>
+                <div class="gallery-item"><img src="images/hero-sri-lanka.jpg" alt="Wildlife"><span>Yala Wildlife</span>
+                </div>
                 <div class="gallery-item"><img src="images/ella.jpg" alt="Tea"><span>Tea Plantations</span></div>
             </div>
-        </div><!-- /page-gallery -->
+
+            <!-- CULTURAL EVENTS - inside Gallery page -->
+            <section class="cultural-events-section" id="cultural-events-gallery">
+
+                <div class="cultural-events-header">
+                    <h2>Cultural <span>Events</span></h2>
+                    <p>Experience the vibrant festivals and traditions of Sri Lanka</p>
+                </div>
+
+                <!-- FILTER TABS -->
+                <div class="events-filter-tabs">
+                    <button class="tab-btn active" onclick="setEventFilterGallery(this,'all')">🎉 All Events</button>
+                    <button class="tab-btn" onclick="setEventFilterGallery(this,'festival')">🎊 Festivals</button>
+                    <button class="tab-btn" onclick="setEventFilterGallery(this,'religious')">🙏 Religious</button>
+                    <button class="tab-btn" onclick="setEventFilterGallery(this,'cultural')">🎭 Cultural</button>
+                    <button class="tab-btn" onclick="setEventFilterGallery(this,'sport')">🏄 Sports</button>
+                </div>
+
+                <!-- EVENTS GRID -->
+                <div class="events-grid" id="eventsGridGallery">
+
+                    <div class="event-card" data-category="religious" onclick="openEventModal(1)">
+                        <div class="event-img-wrap">
+                            <img src="images/maligawa.jpg" alt="Esala Perahera">
+                            <span class="event-category-tag tag-religious">Religious</span>
+                            <div class="event-date-badge"><span class="date-day">19</span><span
+                                    class="date-month">Aug</span></div>
+                        </div>
+                        <div class="event-info">
+                            <h3>Esala Perahera</h3>
+                            <div class="event-meta">
+                                <span><i class="fa-solid fa-location-dot"></i> Kandy</span>
+                                <span><i class="fa-solid fa-clock"></i> 10 Days</span>
+                            </div>
+                            <p class="event-desc">Sri Lanka's grandest and most sacred procession celebrating the Sacred
+                                Tooth Relic.</p>
+                            <div class="event-footer">
+                                <span class="event-status status-upcoming">Upcoming</span>
+                                <button class="event-learn-btn">Learn More →</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="event-card" data-category="festival" onclick="openEventModal(2)">
+                        <div class="event-img-wrap">
+                            <img src="images/hero-sri-lanka.jpg" alt="Sinhala Tamil New Year">
+                            <span class="event-category-tag tag-festival">Festival</span>
+                            <div class="event-date-badge"><span class="date-day">13</span><span
+                                    class="date-month">Apr</span></div>
+                        </div>
+                        <div class="event-info">
+                            <h3>Sinhala &amp; Tamil New Year</h3>
+                            <div class="event-meta">
+                                <span><i class="fa-solid fa-location-dot"></i> Island-Wide</span>
+                                <span><i class="fa-solid fa-clock"></i> 2 Days</span>
+                            </div>
+                            <p class="event-desc">The most celebrated national festival marking the traditional new
+                                year.</p>
+                            <div class="event-footer">
+                                <span class="event-status status-upcoming">Upcoming</span>
+                                <button class="event-learn-btn">Learn More →</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="event-card" data-category="religious" onclick="openEventModal(3)">
+                        <div class="event-img-wrap">
+                            <img src="images/maligawa.jpg" alt="Vesak Festival">
+                            <span class="event-category-tag tag-religious">Religious</span>
+                            <div class="event-date-badge"><span class="date-day">12</span><span
+                                    class="date-month">May</span></div>
+                        </div>
+                        <div class="event-info">
+                            <h3>Vesak Festival</h3>
+                            <div class="event-meta">
+                                <span><i class="fa-solid fa-location-dot"></i> Island-Wide</span>
+                                <span><i class="fa-solid fa-clock"></i> 2 Days</span>
+                            </div>
+                            <p class="event-desc">The most important Buddhist festival illuminating the island with
+                                lanterns and dansalas.</p>
+                            <div class="event-footer">
+                                <span class="event-status status-ongoing">🔴 Ongoing</span>
+                                <button class="event-learn-btn">Learn More →</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="event-card" data-category="cultural" onclick="openEventModal(4)">
+                        <div class="event-img-wrap">
+                            <img src="images/ella.jpg" alt="Galle Literary Festival">
+                            <span class="event-category-tag tag-cultural">Cultural</span>
+                            <div class="event-date-badge"><span class="date-day">23</span><span
+                                    class="date-month">Jan</span></div>
+                        </div>
+                        <div class="event-info">
+                            <h3>Galle Literary Festival</h3>
+                            <div class="event-meta">
+                                <span><i class="fa-solid fa-location-dot"></i> Galle Fort</span>
+                                <span><i class="fa-solid fa-clock"></i> 5 Days</span>
+                            </div>
+                            <p class="event-desc">A world-class literary festival held inside the historic UNESCO Galle
+                                Fort.</p>
+                            <div class="event-footer">
+                                <span class="event-status status-upcoming">Upcoming</span>
+                                <button class="event-learn-btn">Learn More →</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="event-card" data-category="sport" onclick="openEventModal(5)">
+                        <div class="event-img-wrap">
+                            <img src="images/mirs.jpg" alt="Arugam Bay Surf Festival">
+                            <span class="event-category-tag tag-sport">Sport</span>
+                            <div class="event-date-badge"><span class="date-day">15</span><span
+                                    class="date-month">Jul</span></div>
+                        </div>
+                        <div class="event-info">
+                            <h3>Arugam Bay Surf Festival</h3>
+                            <div class="event-meta">
+                                <span><i class="fa-solid fa-location-dot"></i> Arugam Bay</span>
+                                <span><i class="fa-solid fa-clock"></i> 3 Days</span>
+                            </div>
+                            <p class="event-desc">International surf competition on one of the world's top point breaks.
+                            </p>
+                            <div class="event-footer">
+                                <span class="event-status status-upcoming">Upcoming</span>
+                                <button class="event-learn-btn">Learn More →</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="event-card" data-category="religious" onclick="openEventModal(6)">
+                        <div class="event-img-wrap">
+                            <img src="images/hero-sri-lanka.jpg" alt="Navam Perahera">
+                            <span class="event-category-tag tag-religious">Religious</span>
+                            <div class="event-date-badge"><span class="date-day">11</span><span
+                                    class="date-month">Feb</span></div>
+                        </div>
+                        <div class="event-info">
+                            <h3>Navam Perahera</h3>
+                            <div class="event-meta">
+                                <span><i class="fa-solid fa-location-dot"></i> Colombo</span>
+                                <span><i class="fa-solid fa-clock"></i> 2 Nights</span>
+                            </div>
+                            <p class="event-desc">Colombo's spectacular full-moon procession with over 50 elephants.</p>
+                            <div class="event-footer">
+                                <span class="event-status status-upcoming">Upcoming</span>
+                                <button class="event-learn-btn">Learn More →</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div><!-- /eventsGridGallery -->
+
+                <div class="events-no-results" id="eventsNoResultsGallery">
+                    <i class="fa-solid fa-calendar-xmark"></i>
+                    <h3>No events found for this category</h3>
+                </div>
+
+            </section>
+            <!-- /cultural-events-gallery -->
+
+        </div>
 
 
         <!-- ─── PAGE: MAP ─── -->
@@ -362,102 +1120,66 @@
                 <div class="map-container">
                     <iframe
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d395879.9132757409!2d79.79989522364217!3d7.873053582235165!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae25e2f0b6d81b3%3A0x3a1778247194aa9e!2sSri%20Lanka!5e0!3m2!1sen!2slk!4v1698400000000!5m2!1sen!2slk"
-                        width="100%" height="500" style="border:0;" allowfullscreen="" loading="lazy">
-                    </iframe>
+                        width="100%" height="500" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                 </div>
                 <div class="sri-lanka-text">
                     <h2>Discover the Jewel of the Indian Ocean</h2>
-                    <p>From the ancient ruins of Anuradhapura in the north to the pristine beaches of the south, Sri
-                        Lanka packs an extraordinary range of experiences into a compact island. Use the map to plan
-                        your perfect itinerary.</p>
+                    <p>From the ancient ruins of Anuradhapura in the north to the pristine beaches of the south, use the
+                        map to plan your perfect itinerary.</p>
                 </div>
             </section>
-        </div><!-- /page-map -->
+        </div>
 
 
         <!-- ─── PAGE: OUR STORY ─── -->
         <div id="page-ourstory" class="page">
-
             <div class="page-header-banner story-banner">
                 <h1>Our Story</h1>
                 <p>The people behind Explore Sri Lanka</p>
             </div>
-
             <div class="info-page-content story-content">
-
-                <!-- ABOUT -->
                 <div class="story-text">
                     <h2>About Explore Sri Lanka</h2>
                     <p>Explore Sri Lanka was created with a passion to showcase the beauty, culture, and natural wonders
-                        of
-                        Sri Lanka to travelers from around the world. Our platform was built to help visitors discover
-                        the
-                        island's most breathtaking destinations from ancient heritage sites and sacred temples to golden
-                        beaches, misty mountains, and vibrant wildlife parks. We believe that travel is more than just
-                        visiting places; it is about experiencing cultures, creating memories, and discovering the
-                        unique
-                        stories that every destination holds.</p>
-                    <p>Through our website, we provide helpful information, travel inspiration, and destination guides
-                        that
-                        allow travelers to plan their journeys easily. Whether you are looking for adventure,
-                        relaxation,
-                        cultural experiences, or scenic landscapes, Explore Sri Lanka connects you with the best
-                        locations
-                        across the island.</p>
-
+                        of Sri Lanka to travelers from around the world.</p>
                     <h2>Born from a Love of Sri Lanka</h2>
-                    <p>Explore Sri Lanka was founded by a group of passionate travelers and locals who wanted to share
-                        the
-                        true beauty of our island paradise with the world. We believe every visitor deserves an
-                        authentic,
-                        unforgettable experience.</p>
-                    <p>From the misty highlands of Nuwara Eliya to the ancient rock fortresses of the Cultural Triangle,
-                        we've walked every path and tasted every dish to bring you the most accurate, heartfelt guide to
-                        our home.</p>
+                    <p>Founded by passionate travelers and locals who wanted to share the true beauty of our island
+                        paradise with the world.</p>
                 </div>
-
-                <!-- VISION & MISSION -->
                 <div class="story-vm-section">
                     <div class="story-vm-box">
                         <h3>Our Vision</h3>
-                        <p>To become the leading travel inspiration platform that introduces the beauty, heritage, and
-                            natural wonders of Sri Lanka to the world, encouraging sustainable tourism and unforgettable
-                            travel experiences.</p>
+                        <p>To become the leading travel inspiration platform for Sri Lanka, encouraging sustainable
+                            tourism.</p>
                     </div>
                     <div class="story-vm-box">
                         <h3>Our Mission</h3>
-                        <p>To connect travelers with the real Sri Lanka — its people, culture, nature, and history —
-                            while
-                            promoting responsible and sustainable tourism that benefits local communities.</p>
+                        <p>To connect travelers with the real Sri Lanka — its people, culture, nature, and history.</p>
                     </div>
                 </div>
-
-                <!-- SERVICES -->
                 <section class="services">
                     <h2>Our Services</h2>
                     <div class="service-grid">
                         <div class="service">
                             <h4>Destination Guides</h4>
-                            <p>Discover Sri Lanka's most beautiful places including beaches, mountains, and heritage
-                                sites.</p>
+                            <p>Discover Sri Lanka's most beautiful places.</p>
                         </div>
                         <div class="service">
                             <h4>Travel Tips</h4>
-                            <p>Helpful information about transportation, culture, weather, and travel safety.</p>
+                            <p>Helpful information about transportation and culture.</p>
                         </div>
                         <div class="service">
                             <h4>Hotel Booking</h4>
-                            <p>Find comfortable hotels and resorts across Sri Lanka for every type of traveler.</p>
+                            <p>Find comfortable hotels across Sri Lanka.</p>
                         </div>
                         <div class="service">
                             <h4>Travel Inspiration</h4>
-                            <p>Explore travel stories, photos, and experiences that inspire your next adventure.</p>
+                            <p>Stories and photos to inspire your adventure.</p>
                         </div>
                     </div>
                 </section>
-
             </div>
-        </div><!-- /page-ourstory -->
+        </div>
 
 
         <!-- ─── PAGE: CONTACT ─── -->
@@ -488,23 +1210,18 @@
                     <button type="submit">Send Message</button>
                 </form>
             </div>
-        </div><!-- /page-contact -->
+        </div>
 
-    </main><!-- /main-content -->
+    </main>
 
-
-    <!-- ══════════════════════════════════════
-         FOOTER  (never changes)
-    ══════════════════════════════════════ -->
+    <!-- FOOTER -->
     <footer class="footer">
         <div class="footer-container">
-
             <div class="footer-section">
                 <img src="images/lion.png" alt="Logo" class="logo-img">
                 <h2>Explore Sri Lanka</h2>
                 <p>DISCOVER THE PEARL OF THE INDIAN OCEAN</p>
             </div>
-
             <div class="footer-section">
                 <h3>Quick Links</h3>
                 <ul>
@@ -515,12 +1232,9 @@
                     <li><a href="#" onclick="loadPage('contact')">Contact</a></li>
                 </ul>
             </div>
-
             <div class="footer-section">
                 <h3>Contact Us</h3>
-                <p>Explore Sri Lanka – Discover the true beauty of our island paradise. From golden beaches to misty
-                    mountains, experience unforgettable journeys. Plan your perfect adventure with our trusted tourism
-                    guide. 🌿</p>
+                <p>Explore Sri Lanka – Discover the true beauty of our island paradise. 🌿</p>
                 <p class="contact-item">📞 Phone: +94 77 123 4567</p>
                 <p class="contact-item">📧 Email: info@example.com</p>
                 <div class="social-icons">
@@ -529,12 +1243,12 @@
                     <a href="https://x.com/" class="social-link"><i class="fab fa-twitter"></i></a>
                 </div>
             </div>
-
         </div>
-
     </footer>
 
     <script src="script.js"></script>
+    <script src="hotels.js"></script>
+    <script src="cultural-events.js"></script>
 </body>
 
 </html>
