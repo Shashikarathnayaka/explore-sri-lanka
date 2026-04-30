@@ -706,26 +706,6 @@ function setEventFilterGallery(btn, filter) {
 document.addEventListener('DOMContentLoaded', function () {
     renderCulturalEvents('all');
 });
-/* firebase config and initialization */
-
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-analytics.js";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-    apiKey: "AIzaSyD5Fb50de2Ay2h57uCifn1rP7y2kHqWMIs",
-    authDomain: "explore-srilanka-a364b.firebaseapp.com",
-    projectId: "explore-srilanka-a364b",
-    storageBucket: "explore-srilanka-a364b.firebasestorage.app",
-    messagingSenderId: "359754130881",
-    appId: "1:359754130881:web:a6f7c19221df71fcd6fb40",
-    measurementId: "G-V0FWTTVFQG"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+function showDetail(place) {
+    alert('Showing details for: ' + place);
+}
