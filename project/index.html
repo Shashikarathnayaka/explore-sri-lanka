@@ -773,7 +773,7 @@
                 </div>
 
             </section>
-            <!-- /cultural-events-section -->
+            /cultural-events-section
 
             <!-- WHY VISIT -->
             <section class="features">
@@ -946,166 +946,218 @@
                 <div class="gallery-item"><img src="images/ella.jpg" alt="Tea"><span>Tea Plantations</span></div>
             </div>
 
-            <!-- CULTURAL EVENTS - inside Gallery page -->
-            <section class="cultural-events-section" id="cultural-events-gallery">
+            <!-- TRADITIONAL FOODS - inside Gallery page -->
+            <section class="traditional-foods-section" id="traditional-foods-gallery">
 
-                <div class="cultural-events-header">
-                    <h2>Cultural <span>Events</span></h2>
-                    <p>Experience the vibrant festivals and traditions of Sri Lanka</p>
+                <div class="foods-header">
+                    <h2>Traditional <span>Foods</span></h2>
+                    <p>Taste the authentic flavours of Sri Lanka</p>
                 </div>
 
-                <!-- FILTER TABS -->
-                <div class="events-filter-tabs">
-                    <button class="tab-btn active" onclick="setEventFilterGallery(this,'all')">🎉 All Events</button>
-                    <button class="tab-btn" onclick="setEventFilterGallery(this,'festival')">🎊 Festivals</button>
-                    <button class="tab-btn" onclick="setEventFilterGallery(this,'religious')">🙏 Religious</button>
-                    <button class="tab-btn" onclick="setEventFilterGallery(this,'cultural')">🎭 Cultural</button>
-                    <button class="tab-btn" onclick="setEventFilterGallery(this,'sport')">🏄 Sports</button>
+                <div class="foods-filter-tabs">
+                    <button class="food-tab active" onclick="setFoodFilter(this,'all')">🍽️ All Foods</button>
+                    <button class="food-tab" onclick="setFoodFilter(this,'rice')">🍛 Rice &amp; Curry</button>
+                    <button class="food-tab" onclick="setFoodFilter(this,'snack')">🥘 Snacks</button>
+                    <button class="food-tab" onclick="setFoodFilter(this,'sweet')">🍮 Sweets</button>
+                    <button class="food-tab" onclick="setFoodFilter(this,'seafood')">🦞 Seafood</button>
                 </div>
 
-                <!-- EVENTS GRID -->
-                <div class="events-grid" id="eventsGridGallery">
+                <div class="foods-grid" id="foodsGrid">
 
-                    <div class="event-card" data-category="religious" onclick="openEventModal(1)">
-                        <div class="event-img-wrap">
-                            <img src="images/maligawa.jpg" alt="Esala Perahera">
-                            <span class="event-category-tag tag-religious">Religious</span>
-                            <div class="event-date-badge"><span class="date-day">19</span><span
-                                    class="date-month">Aug</span></div>
+                    <div class="food-card" data-category="rice" onclick="openFoodModal(1)">
+                        <div class="food-img-wrap">
+                            <img src="images/rice-curry.jpg" alt="Rice and Curry">
+                            <span class="food-category-tag tag-rice">Rice &amp; Curry</span>
                         </div>
-                        <div class="event-info">
-                            <h3>Esala Perahera</h3>
-                            <div class="event-meta">
-                                <span><i class="fa-solid fa-location-dot"></i> Kandy</span>
-                                <span><i class="fa-solid fa-clock"></i> 10 Days</span>
-                            </div>
-                            <p class="event-desc">Sri Lanka's grandest and most sacred procession celebrating the Sacred
-                                Tooth Relic.</p>
-                            <div class="event-footer">
-                                <span class="event-status status-upcoming">Upcoming</span>
-                                <button class="event-learn-btn">Learn More →</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="event-card" data-category="festival" onclick="openEventModal(2)">
-                        <div class="event-img-wrap">
-                            <img src="images/hero-sri-lanka.jpg" alt="Sinhala Tamil New Year">
-                            <span class="event-category-tag tag-festival">Festival</span>
-                            <div class="event-date-badge"><span class="date-day">13</span><span
-                                    class="date-month">Apr</span></div>
-                        </div>
-                        <div class="event-info">
-                            <h3>Sinhala &amp; Tamil New Year</h3>
-                            <div class="event-meta">
+                        <div class="food-info">
+                            <h3>Rice &amp; Curry</h3>
+                            <div class="food-meta">
                                 <span><i class="fa-solid fa-location-dot"></i> Island-Wide</span>
-                                <span><i class="fa-solid fa-clock"></i> 2 Days</span>
+                                <span><i class="fa-solid fa-fire"></i> Mild – Spicy</span>
                             </div>
-                            <p class="event-desc">The most celebrated national festival marking the traditional new
-                                year.</p>
-                            <div class="event-footer">
-                                <span class="event-status status-upcoming">Upcoming</span>
-                                <button class="event-learn-btn">Learn More →</button>
+                            <p class="food-desc">Sri Lanka's iconic meal — steamed rice with a colourful spread of
+                                curries, sambols,
+                                and chutneys.</p>
+                            <div class="food-footer">
+                                <span class="food-status">Must Try</span>
+                                <button class="food-learn-btn">Learn More →</button>
                             </div>
                         </div>
                     </div>
 
-                    <div class="event-card" data-category="religious" onclick="openEventModal(3)">
-                        <div class="event-img-wrap">
-                            <img src="images/maligawa.jpg" alt="Vesak Festival">
-                            <span class="event-category-tag tag-religious">Religious</span>
-                            <div class="event-date-badge"><span class="date-day">12</span><span
-                                    class="date-month">May</span></div>
+                    <div class="food-card" data-category="snack" onclick="openFoodModal(2)">
+                        <div class="food-img-wrap">
+                            <img src="images/kottu.jpg" alt="Kottu Roti">
+                            <span class="food-category-tag tag-snack">Snack</span>
                         </div>
-                        <div class="event-info">
-                            <h3>Vesak Festival</h3>
-                            <div class="event-meta">
+                        <div class="food-info">
+                            <h3>Kottu Roti</h3>
+                            <div class="food-meta">
                                 <span><i class="fa-solid fa-location-dot"></i> Island-Wide</span>
-                                <span><i class="fa-solid fa-clock"></i> 2 Days</span>
+                                <span><i class="fa-solid fa-fire"></i> Medium</span>
                             </div>
-                            <p class="event-desc">The most important Buddhist festival illuminating the island with
-                                lanterns and dansalas.</p>
-                            <div class="event-footer">
-                                <span class="event-status status-ongoing">🔴 Ongoing</span>
-                                <button class="event-learn-btn">Learn More →</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="event-card" data-category="cultural" onclick="openEventModal(4)">
-                        <div class="event-img-wrap">
-                            <img src="images/ella.jpg" alt="Galle Literary Festival">
-                            <span class="event-category-tag tag-cultural">Cultural</span>
-                            <div class="event-date-badge"><span class="date-day">23</span><span
-                                    class="date-month">Jan</span></div>
-                        </div>
-                        <div class="event-info">
-                            <h3>Galle Literary Festival</h3>
-                            <div class="event-meta">
-                                <span><i class="fa-solid fa-location-dot"></i> Galle Fort</span>
-                                <span><i class="fa-solid fa-clock"></i> 5 Days</span>
-                            </div>
-                            <p class="event-desc">A world-class literary festival held inside the historic UNESCO Galle
-                                Fort.</p>
-                            <div class="event-footer">
-                                <span class="event-status status-upcoming">Upcoming</span>
-                                <button class="event-learn-btn">Learn More →</button>
+                            <p class="food-desc">Chopped flatbread stir-fried with vegetables, eggs, and spices — a
+                                beloved street
+                                food staple.</p>
+                            <div class="food-footer">
+                                <span class="food-status">Street Food</span>
+                                <button class="food-learn-btn">Learn More →</button>
                             </div>
                         </div>
                     </div>
 
-                    <div class="event-card" data-category="sport" onclick="openEventModal(5)">
-                        <div class="event-img-wrap">
-                            <img src="images/mirs.jpg" alt="Arugam Bay Surf Festival">
-                            <span class="event-category-tag tag-sport">Sport</span>
-                            <div class="event-date-badge"><span class="date-day">15</span><span
-                                    class="date-month">Jul</span></div>
+                    <div class="food-card" data-category="snack" onclick="openFoodModal(3)">
+                        <div class="food-img-wrap">
+                            <img src="images/hoppers.jpg" alt="Hoppers">
+                            <span class="food-category-tag tag-snack">Snack</span>
                         </div>
-                        <div class="event-info">
-                            <h3>Arugam Bay Surf Festival</h3>
-                            <div class="event-meta">
-                                <span><i class="fa-solid fa-location-dot"></i> Arugam Bay</span>
-                                <span><i class="fa-solid fa-clock"></i> 3 Days</span>
+                        <div class="food-info">
+                            <h3>Hoppers (Appa)</h3>
+                            <div class="food-meta">
+                                <span><i class="fa-solid fa-location-dot"></i> Colombo, Kandy</span>
+                                <span><i class="fa-solid fa-fire"></i> Mild</span>
                             </div>
-                            <p class="event-desc">International surf competition on one of the world's top point breaks.
-                            </p>
-                            <div class="event-footer">
-                                <span class="event-status status-upcoming">Upcoming</span>
-                                <button class="event-learn-btn">Learn More →</button>
+                            <p class="food-desc">Bowl-shaped rice flour crepes, crispy on the edges and soft in the
+                                centre — eaten
+                                with coconut sambol.</p>
+                            <div class="food-footer">
+                                <span class="food-status">Breakfast</span>
+                                <button class="food-learn-btn">Learn More →</button>
                             </div>
                         </div>
                     </div>
 
-                    <div class="event-card" data-category="religious" onclick="openEventModal(6)">
-                        <div class="event-img-wrap">
-                            <img src="images/hero-sri-lanka.jpg" alt="Navam Perahera">
-                            <span class="event-category-tag tag-religious">Religious</span>
-                            <div class="event-date-badge"><span class="date-day">11</span><span
-                                    class="date-month">Feb</span></div>
+                    <div class="food-card" data-category="seafood" onclick="openFoodModal(4)">
+                        <div class="food-img-wrap">
+                            <img src="images/crab-curry.jpg" alt="Jaffna Crab Curry">
+                            <span class="food-category-tag tag-seafood">Seafood</span>
                         </div>
-                        <div class="event-info">
-                            <h3>Navam Perahera</h3>
-                            <div class="event-meta">
+                        <div class="food-info">
+                            <h3>Jaffna Crab Curry</h3>
+                            <div class="food-meta">
+                                <span><i class="fa-solid fa-location-dot"></i> Jaffna</span>
+                                <span><i class="fa-solid fa-fire"></i> Very Spicy</span>
+                            </div>
+                            <p class="food-desc">Fiery and fragrant crab curry from the north, cooked with Jaffna spices
+                                and coconut
+                                milk.</p>
+                            <div class="food-footer">
+                                <span class="food-status">Regional</span>
+                                <button class="food-learn-btn">Learn More →</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="food-card" data-category="sweet" onclick="openFoodModal(5)">
+                        <div class="food-img-wrap">
+                            <img src="images/watalappan.jpg" alt="Watalappan">
+                            <span class="food-category-tag tag-sweet">Sweet</span>
+                        </div>
+                        <div class="food-info">
+                            <h3>Watalappan</h3>
+                            <div class="food-meta">
+                                <span><i class="fa-solid fa-location-dot"></i> Island-Wide</span>
+                                <span><i class="fa-solid fa-star"></i> Dessert</span>
+                            </div>
+                            <p class="food-desc">A rich coconut custard pudding made with jaggery and spices — a
+                                must-try
+                                Malay-influenced dessert.</p>
+                            <div class="food-footer">
+                                <span class="food-status">Festive</span>
+                                <button class="food-learn-btn">Learn More →</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="food-card" data-category="seafood" onclick="openFoodModal(6)">
+                        <div class="food-img-wrap">
+                            <img src="images/isso-vadai.jpg" alt="Isso Vadai">
+                            <span class="food-category-tag tag-seafood">Seafood</span>
+                        </div>
+                        <div class="food-info">
+                            <h3>Isso Vadai</h3>
+                            <div class="food-meta">
+                                <span><i class="fa-solid fa-location-dot"></i> Negombo, Jaffna</span>
+                                <span><i class="fa-solid fa-fire"></i> Medium</span>
+                            </div>
+                            <p class="food-desc">Crispy lentil fritters topped with whole prawns — a popular coastal
+                                snack sold at
+                                beachside stalls.</p>
+                            <div class="food-footer">
+                                <span class="food-status">Street Food</span>
+                                <button class="food-learn-btn">Learn More →</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="food-card" data-category="sweet" onclick="openFoodModal(7)">
+                        <div class="food-img-wrap">
+                            <img src="images/kavum.jpg" alt="Kavum">
+                            <span class="food-category-tag tag-sweet">Sweet</span>
+                        </div>
+                        <div class="food-info">
+                            <h3>Kavum</h3>
+                            <div class="food-meta">
+                                <span><i class="fa-solid fa-location-dot"></i> Island-Wide</span>
+                                <span><i class="fa-solid fa-star"></i> Dessert</span>
+                            </div>
+                            <p class="food-desc">Traditional deep-fried oil cakes made from rice flour and treacle,
+                                prepared
+                                especially during New Year.</p>
+                            <div class="food-footer">
+                                <span class="food-status">New Year Special</span>
+                                <button class="food-learn-btn">Learn More →</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="food-card" data-category="rice" onclick="openFoodModal(8)">
+                        <div class="food-img-wrap">
+                            <img src="images/lamprais.jpg" alt="Lamprais">
+                            <span class="food-category-tag tag-rice">Rice &amp; Curry</span>
+                        </div>
+                        <div class="food-info">
+                            <h3>Lamprais</h3>
+                            <div class="food-meta">
                                 <span><i class="fa-solid fa-location-dot"></i> Colombo</span>
-                                <span><i class="fa-solid fa-clock"></i> 2 Nights</span>
+                                <span><i class="fa-solid fa-fire"></i> Mild</span>
                             </div>
-                            <p class="event-desc">Colombo's spectacular full-moon procession with over 50 elephants.</p>
-                            <div class="event-footer">
-                                <span class="event-status status-upcoming">Upcoming</span>
-                                <button class="event-learn-btn">Learn More →</button>
+                            <p class="food-desc">Dutch-Burgher rice dish — rice, curries, and accompaniments wrapped and
+                                baked in a
+                                banana leaf.</p>
+                            <div class="food-footer">
+                                <span class="food-status">Heritage</span>
+                                <button class="food-learn-btn">Learn More →</button>
                             </div>
                         </div>
                     </div>
 
-                </div><!-- /eventsGridGallery -->
+                </div><!-- /foods-grid -->
 
-                <div class="events-no-results" id="eventsNoResultsGallery">
-                    <i class="fa-solid fa-calendar-xmark"></i>
-                    <h3>No events found for this category</h3>
+                <div class="foods-no-results" id="foodsNoResults" style="display:none;">
+                    <i class="fa-solid fa-bowl-food"></i>
+                    <h3>No foods found for this category</h3>
+                    <button onclick="setFoodFilter(document.querySelector('.food-tab'),'all')">Show All Foods</button>
+                </div>
+
+                <!-- FOOD DETAIL MODAL -->
+                <div class="food-modal-overlay" id="foodModal" onclick="closeFoodModal(event)">
+                    <div class="food-modal">
+                        <button class="food-modal-close" onclick="closeFoodModalBtn()">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                        <span class="modal-food-cat-tag" id="modalFoodCatTag"></span>
+                        <h2 id="modalFoodTitle"></h2>
+                        <div class="modal-food-meta">
+                            <div><i class="fa-solid fa-location-dot"></i> <span id="modalFoodLocation"></span></div>
+                            <div><i class="fa-solid fa-fire"></i> <span id="modalFoodSpice"></span></div>
+                        </div>
+                        <p class="modal-food-desc" id="modalFoodDesc"></p>
+                        <button class="modal-ok-btn" onclick="closeFoodModalBtn()">Close</button>
+                    </div>
                 </div>
 
             </section>
-            <!-- /cultural-events-gallery -->
 
         </div>
 

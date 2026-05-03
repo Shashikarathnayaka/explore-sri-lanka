@@ -34,7 +34,6 @@
             overflow-x: hidden;
         }
 
-        /* ══ BACKGROUND ══ */
         .bg {
             position: fixed;
             inset: 0;
@@ -53,7 +52,6 @@
                     rgba(244, 166, 42, 0.18) 100%);
         }
 
-        /* ══ ANIMATED PARTICLES ══ */
         .particles {
             position: fixed;
             inset: 0;
@@ -89,7 +87,6 @@
             }
         }
 
-        /* ══ LAYOUT ══ */
         .layout {
             position: relative;
             z-index: 2;
@@ -97,7 +94,6 @@
             min-height: 100vh;
         }
 
-        /* ══ LEFT PANEL ══ */
         .left {
             flex: 1.2;
             display: flex;
@@ -237,7 +233,6 @@
             animation: slideUp 0.8s ease both;
         }
 
-        /* ══ RIGHT PANEL ══ */
         .right {
             flex: 0 0 min(480px, 100%);
             width: min(480px, 100%);
@@ -257,7 +252,6 @@
             animation: slideUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
         }
 
-        /* ── Tabs ── */
         .tabs {
             display: flex;
             background: rgba(255, 255, 255, 0.06);
@@ -289,7 +283,6 @@
             box-shadow: 0 4px 15px rgba(244, 166, 42, 0.35);
         }
 
-        /* ── Form head ── */
         .form-head {
             margin-bottom: clamp(18px, 2.5vh, 28px);
         }
@@ -309,7 +302,6 @@
             font-weight: 300;
         }
 
-        /* ── Alert ── */
         .alert {
             padding: 12px 14px;
             border-radius: 10px;
@@ -333,7 +325,6 @@
             color: #6debb0;
         }
 
-        /* ── Field ── */
         .field {
             margin-bottom: clamp(12px, 2vh, 18px);
         }
@@ -410,7 +401,6 @@
             color: var(--gold);
         }
 
-        /* ── Row ── */
         .row {
             display: flex;
             justify-content: space-between;
@@ -450,7 +440,6 @@
             opacity: 0.75;
         }
 
-        /* ── Terms ── */
         .terms {
             margin-bottom: clamp(14px, 2vh, 22px);
             font-size: 12px;
@@ -477,7 +466,6 @@
             text-decoration: none;
         }
 
-        /* ── Submit ── */
         .submit-btn {
             width: 100%;
             padding: 14px;
@@ -510,6 +498,12 @@
             transform: translateY(0);
         }
 
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
         .submit-btn .btn-icon {
             font-size: 14px;
             transition: transform 0.3s;
@@ -519,7 +513,23 @@
             transform: translateX(4px);
         }
 
-        /* ── Divider ── */
+        /* Loading spinner inside button */
+        .spinner {
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(0, 0, 0, 0.3);
+            border-top-color: #000;
+            border-radius: 50%;
+            animation: spin 0.7s linear infinite;
+            display: none;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
         .divider {
             display: flex;
             align-items: center;
@@ -543,7 +553,6 @@
             white-space: nowrap;
         }
 
-        /* ── Social buttons ── */
         .social-btns {
             display: flex;
             gap: 10px;
@@ -574,7 +583,6 @@
             transform: translateY(-2px);
         }
 
-        /* ── Switch text ── */
         .switch-text {
             text-align: center;
             font-size: 13px;
@@ -592,7 +600,6 @@
             text-decoration: underline;
         }
 
-        /* ── Password strength ── */
         .strength-bar {
             display: flex;
             gap: 4px;
@@ -615,7 +622,6 @@
             transition: color 0.3s;
         }
 
-        /* ── Form sections ── */
         .form-section {
             display: none;
         }
@@ -624,7 +630,6 @@
             display: block;
         }
 
-        /* ══ ANIMATIONS ══ */
         @keyframes slideUp {
             from {
                 opacity: 0;
@@ -637,9 +642,6 @@
             }
         }
 
-        /* ══ RESPONSIVE BREAKPOINTS ══ */
-
-        /* Large desktop (1400px+) */
         @media (min-width: 1400px) {
             .left {
                 padding: 70px 90px;
@@ -650,7 +652,6 @@
             }
         }
 
-        /* Tablet landscape / small desktop (901px – 1100px) */
         @media (max-width: 1100px) {
             .left {
                 flex: 1;
@@ -662,7 +663,6 @@
             }
         }
 
-        /* Tablet portrait (601px – 900px) — stack vertically */
         @media (max-width: 900px) {
             .layout {
                 flex-direction: column;
@@ -705,30 +705,6 @@
             }
         }
 
-        /* Large mobile (481px – 600px) */
-        @media (max-width: 600px) {
-            .left {
-                padding: 36px 20px 28px;
-            }
-
-            .right {
-                padding: 28px 20px 36px;
-            }
-
-            .brand p {
-                max-width: 100%;
-            }
-
-            .perks {
-                gap: 10px;
-            }
-
-            .perk {
-                flex: 1 1 140px;
-            }
-        }
-
-        /* Small mobile (≤480px) */
         @media (max-width: 480px) {
             .left {
                 padding: 32px 18px 24px;
@@ -742,122 +718,13 @@
                 font-size: clamp(26px, 8vw, 34px);
             }
 
-            .brand-logo span {
-                font-size: clamp(22px, 6vw, 28px);
-            }
-
-            .brand-logo img {
-                height: clamp(32px, 8vw, 42px);
-            }
-
             .perks {
                 display: none;
-            }
-
-            .brand p {
-                font-size: 13px;
-            }
-
-            .deco-line {
-                margin: 18px 0;
             }
 
             .input-wrap input {
                 padding: 12px 40px;
                 font-size: 16px;
-                /* prevent iOS zoom */
-            }
-
-            .submit-btn {
-                font-size: 14px;
-                padding: 13px;
-            }
-
-            .social-btn {
-                font-size: 16px;
-            }
-        }
-
-        /* Extra small (≤360px) */
-        @media (max-width: 360px) {
-            .left {
-                padding: 28px 14px 20px;
-            }
-
-            .right {
-                padding: 20px 14px 28px;
-            }
-
-            .brand h1 {
-                font-size: 24px;
-            }
-
-            .back-link {
-                font-size: 11px;
-            }
-
-            .tabs {
-                margin-bottom: 18px;
-            }
-        }
-
-        /* Landscape mobile (short + wide screens) */
-        @media (max-height: 500px) and (orientation: landscape) {
-            .layout {
-                flex-direction: row;
-                min-height: 100vh;
-            }
-
-            .left {
-                flex: 1;
-                padding: 20px 28px;
-                justify-content: center;
-                overflow-y: auto;
-            }
-
-            .brand h1 {
-                font-size: 28px;
-            }
-
-            .brand p {
-                display: none;
-            }
-
-            .perks {
-                display: none;
-            }
-
-            .deco-line {
-                margin: 12px 0;
-            }
-
-            .back-link {
-                margin-bottom: 16px;
-            }
-
-            .right {
-                flex: 0 0 380px;
-                width: 380px;
-                border-left: 1px solid var(--glass-border);
-                border-top: none;
-                padding: 16px 20px;
-                overflow-y: auto;
-            }
-
-            .card {
-                max-width: 340px;
-            }
-
-            .form-head {
-                margin-bottom: 14px;
-            }
-
-            .field {
-                margin-bottom: 10px;
-            }
-
-            .tabs {
-                margin-bottom: 14px;
             }
         }
     </style>
@@ -865,16 +732,12 @@
 
 <body>
 
-    <!-- Background -->
     <div class="bg"></div>
-
-    <!-- Particles -->
     <div class="particles" id="particles"></div>
 
-    <!-- Layout -->
     <div class="layout">
 
-        <!-- ══ LEFT ══ -->
+        <!-- LEFT -->
         <div class="left">
             <a href="../index.html" class="back-link">
                 <i class="fa-solid fa-arrow-left" style="font-size:11px;"></i> Back to site
@@ -918,17 +781,16 @@
             </div>
         </div>
 
-        <!-- ══ RIGHT ══ -->
+        <!-- RIGHT -->
         <div class="right">
             <div class="card">
 
-                <!-- Tabs -->
                 <div class="tabs">
                     <button class="tab-btn active" id="tab-login" onclick="switchTab('login')">Sign In</button>
                     <button class="tab-btn" id="tab-register" onclick="switchTab('register')">Register</button>
                 </div>
 
-                <!-- ── LOGIN ── -->
+                <!-- LOGIN -->
                 <div class="form-section active" id="section-login">
                     <div class="form-head">
                         <h2>Welcome back</h2>
@@ -940,12 +802,15 @@
 
                     <div class="divider"><span>or continue with</span></div>
                     <div class="social-btns">
-                        <button class="social-btn" title="Google" onclick="socialLogin('Google')"><i
-                                class="fab fa-google"></i></button>
-                        <button class="social-btn" title="Facebook" onclick="socialLogin('Facebook')"><i
-                                class="fab fa-facebook-f"></i></button>
-                        <button class="social-btn" title="Apple" onclick="socialLogin('Apple')"><i
-                                class="fab fa-apple"></i></button>
+                        <button class="social-btn" title="Google" onclick="socialLogin('google')">
+                            <i class="fab fa-google"></i>
+                        </button>
+                        <button class="social-btn" title="Facebook" onclick="socialLogin('facebook')">
+                            <i class="fab fa-facebook-f"></i>
+                        </button>
+                        <button class="social-btn" title="Apple" onclick="socialLogin('apple')">
+                            <i class="fab fa-apple"></i>
+                        </button>
                     </div>
                     <div class="divider"><span>or use email</span></div>
 
@@ -963,8 +828,9 @@
                             <i class="fa-solid fa-lock icon"></i>
                             <input type="password" id="l-pw" placeholder="Enter password"
                                 autocomplete="current-password">
-                            <button class="eye-btn" onclick="toggleEye('l-pw',this)" tabindex="-1"><i
-                                    class="fa-solid fa-eye"></i></button>
+                            <button class="eye-btn" onclick="toggleEye('l-pw',this)" tabindex="-1">
+                                <i class="fa-solid fa-eye"></i>
+                            </button>
                         </div>
                     </div>
 
@@ -972,12 +838,13 @@
                         <label class="check-label">
                             <input type="checkbox" id="remember"> Remember me
                         </label>
-                        <a href="#" class="forgot">Forgot password?</a>
+                        <a href="#" class="forgot" onclick="doForgotPassword(event)">Forgot password?</a>
                     </div>
 
-                    <button class="submit-btn" onclick="doLogin()">
-                        <span>Sign In</span>
-                        <i class="fa-solid fa-arrow-right btn-icon"></i>
+                    <button class="submit-btn" id="login-btn" onclick="doLogin()">
+                        <div class="spinner" id="login-spinner"></div>
+                        <span id="login-btn-text">Sign In</span>
+                        <i class="fa-solid fa-arrow-right btn-icon" id="login-btn-icon"></i>
                     </button>
 
                     <p class="switch-text">
@@ -985,7 +852,7 @@
                     </p>
                 </div>
 
-                <!-- ── REGISTER ── -->
+                <!-- REGISTER -->
                 <div class="form-section" id="section-register">
                     <div class="form-head">
                         <h2>Create account</h2>
@@ -1017,8 +884,9 @@
                             <i class="fa-solid fa-lock icon"></i>
                             <input type="password" id="r-pw" placeholder="Min. 6 characters"
                                 oninput="checkStrength(this.value)" autocomplete="new-password">
-                            <button class="eye-btn" onclick="toggleEye('r-pw',this)" tabindex="-1"><i
-                                    class="fa-solid fa-eye"></i></button>
+                            <button class="eye-btn" onclick="toggleEye('r-pw',this)" tabindex="-1">
+                                <i class="fa-solid fa-eye"></i>
+                            </button>
                         </div>
                         <div class="strength-bar">
                             <div class="strength-seg" id="s1"></div>
@@ -1035,8 +903,9 @@
                             <i class="fa-solid fa-shield-halved icon"></i>
                             <input type="password" id="r-confirm" placeholder="Repeat your password"
                                 autocomplete="new-password">
-                            <button class="eye-btn" onclick="toggleEye('r-confirm',this)" tabindex="-1"><i
-                                    class="fa-solid fa-eye"></i></button>
+                            <button class="eye-btn" onclick="toggleEye('r-confirm',this)" tabindex="-1">
+                                <i class="fa-solid fa-eye"></i>
+                            </button>
                         </div>
                     </div>
 
@@ -1048,9 +917,10 @@
                         </label>
                     </div>
 
-                    <button class="submit-btn" onclick="doRegister()">
-                        <span>Create Account</span>
-                        <i class="fa-solid fa-arrow-right btn-icon"></i>
+                    <button class="submit-btn" id="reg-btn" onclick="doRegister()">
+                        <div class="spinner" id="reg-spinner"></div>
+                        <span id="reg-btn-text">Create Account</span>
+                        <i class="fa-solid fa-arrow-right btn-icon" id="reg-btn-icon"></i>
                     </button>
 
                     <p class="switch-text">
@@ -1063,8 +933,38 @@
 
     </div>
 
+    <!-- ══════════════════════════════════════════════════
+         FIREBASE SDK  (v10 modular — compat layer used
+         so existing onclick handlers stay unchanged)
+    ══════════════════════════════════════════════════ -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+
     <script>
-        /* ── PARTICLES ── */
+        /* ══════════════════════════════════════════════
+           🔧 FIREBASE CONFIG
+           Firebase Console → Project Settings → Web App
+           eka aken copy karala mekata paste karanna.
+        ══════════════════════════════════════════════ */
+        const firebaseConfig = {
+            apiKey: "AIzaSyD5Fb50de2Ay2h57uCifn1rP7y2kHqWMIs",
+            authDomain: "explore-srilanka-a364b.firebaseapp.com",
+            projectId: "explore-srilanka-a364b",
+            storageBucket: "explore-srilanka-a364b.firebasestorage.app",
+            messagingSenderId: "359754130881",
+            appId: "1:359754130881:web:a6f7c19221df71fcd6fb40",
+            measurementId: "G-V0FWTTVFQG"
+        };
+
+        // Firebase initialise karanna
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        /* ══════════════════════════════════════════════
+           PARTICLES
+        ══════════════════════════════════════════════ */
         (function () {
             var c = document.getElementById('particles');
             for (var i = 0; i < 22; i++) {
@@ -1082,7 +982,9 @@
             }
         })();
 
-        /* ── TAB SWITCH ── */
+        /* ══════════════════════════════════════════════
+           TAB SWITCH
+        ══════════════════════════════════════════════ */
         function switchTab(t) {
             ['login', 'register'].forEach(function (n) {
                 document.getElementById('section-' + n).classList.toggle('active', n === t);
@@ -1090,15 +992,21 @@
             });
         }
 
-        /* ── PASSWORD TOGGLE ── */
+        /* ══════════════════════════════════════════════
+           PASSWORD TOGGLE
+        ══════════════════════════════════════════════ */
         function toggleEye(id, btn) {
             var el = document.getElementById(id);
             var show = el.type === 'password';
             el.type = show ? 'text' : 'password';
-            btn.innerHTML = show ? '<i class="fa-solid fa-eye-slash"></i>' : '<i class="fa-solid fa-eye"></i>';
+            btn.innerHTML = show
+                ? '<i class="fa-solid fa-eye-slash"></i>'
+                : '<i class="fa-solid fa-eye"></i>';
         }
 
-        /* ── PASSWORD STRENGTH ── */
+        /* ══════════════════════════════════════════════
+           PASSWORD STRENGTH
+        ══════════════════════════════════════════════ */
         function checkStrength(v) {
             var score = 0;
             if (v.length >= 6) score++;
@@ -1108,88 +1016,256 @@
             var colors = ['', '#e24b4a', '#f4a62a', '#1d9e75', '#1d9e75'];
             var labels = ['', 'Weak', 'Fair', 'Good', 'Strong'];
             for (var i = 1; i <= 4; i++) {
-                document.getElementById('s' + i).style.background = i <= score ? colors[score] : 'rgba(255,255,255,0.1)';
+                document.getElementById('s' + i).style.background =
+                    i <= score ? colors[score] : 'rgba(255,255,255,0.1)';
             }
             var lbl = document.getElementById('s-label');
             lbl.textContent = v.length ? labels[score] : '';
             lbl.style.color = colors[score];
         }
 
-        /* ── ALERT HELPER ── */
+        /* ══════════════════════════════════════════════
+           ALERT HELPERS
+        ══════════════════════════════════════════════ */
         function showAlert(id, msg, type) {
             var el = document.getElementById(id);
-            el.textContent = msg;
+            el.innerHTML = '<i class="fa-solid fa-' +
+                (type === 'error' ? 'circle-exclamation' : 'circle-check') +
+                '"></i> ' + msg;
             el.style.display = 'flex';
             el.className = 'alert ' + type;
         }
+
         function hideAlerts() {
             ['login-err', 'login-ok', 'reg-err', 'reg-ok'].forEach(function (id) {
                 document.getElementById(id).style.display = 'none';
             });
         }
 
-        /* ── STORAGE ── */
-        function getUsers() { return JSON.parse(localStorage.getItem('esl_users') || '[]'); }
-        function saveUsers(u) { localStorage.setItem('esl_users', JSON.stringify(u)); }
-
-        /* ── LOGIN ── */
-        function doLogin() {
-            hideAlerts();
-            var email = document.getElementById('l-email').value.trim().toLowerCase();
-            var pw = document.getElementById('l-pw').value;
-            if (!email || !pw) return showAlert('login-err', 'Please fill in all fields.', 'error');
-            var users = getUsers();
-            var u = users.find(function (x) { return x.email === email && x.pw === pw; });
-            if (!u) return showAlert('login-err', 'Incorrect email or password.', 'error');
-            if (document.getElementById('remember').checked) {
-                localStorage.setItem('esl_remember', JSON.stringify({ name: u.name, email: u.email }));
-            }
-            localStorage.setItem('esl_current_user', JSON.stringify({ name: u.name, email: u.email }));
-            showAlert('login-ok', 'Welcome back, ' + u.name + '! Redirecting…', 'success');
-            setTimeout(function () { window.location.href = 'index.html'; }, 1100);
+        /* ══════════════════════════════════════════════
+           BUTTON LOADING STATE
+        ══════════════════════════════════════════════ */
+        function setLoading(prefix, loading) {
+            var btn = document.getElementById(prefix + '-btn');
+            var spinner = document.getElementById(prefix + '-spinner');
+            var text = document.getElementById(prefix + '-btn-text');
+            var icon = document.getElementById(prefix + '-btn-icon');
+            btn.disabled = loading;
+            spinner.style.display = loading ? 'block' : 'none';
+            text.textContent = loading
+                ? (prefix === 'login' ? 'Signing in…' : 'Creating account…')
+                : (prefix === 'login' ? 'Sign In' : 'Create Account');
+            if (icon) icon.style.display = loading ? 'none' : 'inline';
         }
 
-        /* ── REGISTER ── */
+        /* ══════════════════════════════════════════════
+           FIREBASE ERROR → USER-FRIENDLY MESSAGE
+        ══════════════════════════════════════════════ */
+        function friendlyError(code) {
+            var map = {
+                'auth/user-not-found': 'No account found with this email.',
+                'auth/wrong-password': 'Incorrect password. Please try again.',
+                'auth/email-already-in-use': 'This email is already registered.',
+                'auth/weak-password': 'Password must be at least 6 characters.',
+                'auth/invalid-email': 'Please enter a valid email address.',
+                'auth/too-many-requests': 'Too many attempts. Please try again later.',
+                'auth/network-request-failed': 'Network error. Check your connection.',
+                'auth/invalid-credential': 'Incorrect email or password.',
+                'auth/popup-closed-by-user': 'Sign-in popup was closed. Please try again.',
+            };
+            return map[code] || 'Something went wrong. Please try again.';
+        }
+
+        /* ══════════════════════════════════════════════
+           ✅ LOGIN  — Firebase Auth
+        ══════════════════════════════════════════════ */
+        function doLogin() {
+            hideAlerts();
+            var email = document.getElementById('l-email').value.trim();
+            var pw = document.getElementById('l-pw').value;
+
+            if (!email || !pw) {
+                return showAlert('login-err', 'Please fill in all fields.', 'error');
+            }
+
+            setLoading('login', true);
+
+            // Remember-me persistence
+            var persistence = document.getElementById('remember').checked
+                ? firebase.auth.Auth.Persistence.LOCAL
+                : firebase.auth.Auth.Persistence.SESSION;
+
+            auth.setPersistence(persistence)
+                .then(function () {
+                    return auth.signInWithEmailAndPassword(email, pw);
+                })
+                .then(function (cred) {
+                    // Firestore eke lastLogin update karanna
+                    return db.collection('users').doc(cred.user.uid).update({
+                        lastLogin: firebase.firestore.FieldValue.serverTimestamp()
+                    }).catch(function () { }); // update fail unoth ignore karanna
+                })
+                .then(function () {
+                    showAlert('login-ok', 'Welcome back! Redirecting…', 'success');
+                    setTimeout(function () {
+                        window.location.href = '../index.html';
+                    }, 1100);
+                })
+                .catch(function (err) {
+                    setLoading('login', false);
+                    showAlert('login-err', friendlyError(err.code), 'error');
+                });
+        }
+
+        /* ══════════════════════════════════════════════
+           ✅ REGISTER — Firebase Auth + Firestore
+        ══════════════════════════════════════════════ */
         function doRegister() {
             hideAlerts();
             var name = document.getElementById('r-name').value.trim();
-            var email = document.getElementById('r-email').value.trim().toLowerCase();
+            var email = document.getElementById('r-email').value.trim();
             var pw = document.getElementById('r-pw').value;
             var cpw = document.getElementById('r-confirm').value;
             var terms = document.getElementById('r-terms').checked;
-            if (!name) return showAlert('reg-err', 'Please enter your full name.', 'error');
-            if (!email || !email.includes('@')) return showAlert('reg-err', 'Please enter a valid email.', 'error');
-            if (pw.length < 6) return showAlert('reg-err', 'Password must be at least 6 characters.', 'error');
-            if (pw !== cpw) return showAlert('reg-err', 'Passwords do not match.', 'error');
-            if (!terms) return showAlert('reg-err', 'Please accept the Terms & Conditions.', 'error');
-            var users = getUsers();
-            if (users.find(function (x) { return x.email === email; })) return showAlert('reg-err', 'This email is already registered.', 'error');
-            users.push({ name: name, email: email, pw: pw });
-            saveUsers(users);
-            localStorage.setItem('esl_current_user', JSON.stringify({ name: name, email: email }));
-            showAlert('reg-ok', 'Account created! Signing you in…', 'success');
-            setTimeout(function () { window.location.href = 'index.html'; }, 1100);
+
+            // Client-side validation
+            if (!name)
+                return showAlert('reg-err', 'Please enter your full name.', 'error');
+            if (!email || !email.includes('@'))
+                return showAlert('reg-err', 'Please enter a valid email.', 'error');
+            if (pw.length < 6)
+                return showAlert('reg-err', 'Password must be at least 6 characters.', 'error');
+            if (pw !== cpw)
+                return showAlert('reg-err', 'Passwords do not match.', 'error');
+            if (!terms)
+                return showAlert('reg-err', 'Please accept the Terms & Conditions.', 'error');
+
+            setLoading('reg', true);
+
+            // 1. Firebase Auth account create karanna
+            auth.createUserWithEmailAndPassword(email, pw)
+                .then(function (cred) {
+                    var uid = cred.user.uid;
+                    var user = cred.user;
+
+                    // 2. Auth profile update karanna (displayName)
+                    var profileUpdate = user.updateProfile({ displayName: name });
+
+                    // 3. Firestore 'users' collection eke document save karanna
+                    var firestoreSave = db.collection('users').doc(uid).set({
+                        uid: uid,
+                        name: name,
+                        email: email,
+                        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                        lastLogin: firebase.firestore.FieldValue.serverTimestamp(),
+                        role: 'user',
+                        savedPlaces: [],
+                        provider: 'email'
+                    });
+
+                    return Promise.all([profileUpdate, firestoreSave]);
+                })
+                .then(function () {
+                    showAlert('reg-ok', 'Account created! Signing you in…', 'success');
+                    setTimeout(function () {
+                        window.location.href = '../index.html';
+                    }, 1100);
+                })
+                .catch(function (err) {
+                    setLoading('reg', false);
+                    showAlert('reg-err', friendlyError(err.code), 'error');
+                });
         }
 
-        /* ── SOCIAL LOGIN (demo) ── */
+        /* ══════════════════════════════════════════════
+           ✅ GOOGLE SOCIAL LOGIN
+        ══════════════════════════════════════════════ */
         function socialLogin(provider) {
-            var name = provider + ' User';
-            localStorage.setItem('esl_current_user', JSON.stringify({ name: name, email: provider.toLowerCase() + '@demo.com' }));
-            window.location.href = 'index.html';
+            var authProvider;
+
+            if (provider === 'google') {
+                authProvider = new firebase.auth.GoogleAuthProvider();
+            } else if (provider === 'facebook') {
+                authProvider = new firebase.auth.FacebookAuthProvider();
+            } else {
+                // Apple & others — demo only
+                showAlert('login-err', provider + ' sign-in coming soon.', 'error');
+                return;
+            }
+
+            auth.signInWithPopup(authProvider)
+                .then(function (result) {
+                    var user = result.user;
+                    var isNewUser = result.additionalUserInfo && result.additionalUserInfo.isNewUser;
+
+                    if (isNewUser) {
+                        // Firestore eke nawa user save karanna
+                        return db.collection('users').doc(user.uid).set({
+                            uid: user.uid,
+                            name: user.displayName || provider + ' User',
+                            email: user.email,
+                            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                            lastLogin: firebase.firestore.FieldValue.serverTimestamp(),
+                            role: 'user',
+                            savedPlaces: [],
+                            provider: provider,
+                            photoURL: user.photoURL || ''
+                        });
+                    } else {
+                        return db.collection('users').doc(user.uid).update({
+                            lastLogin: firebase.firestore.FieldValue.serverTimestamp()
+                        }).catch(function () { });
+                    }
+                })
+                .then(function () {
+                    window.location.href = '../index.html';
+                })
+                .catch(function (err) {
+                    showAlert('login-err', friendlyError(err.code), 'error');
+                });
         }
 
-        /* ── ENTER KEY ── */
+        /* ══════════════════════════════════════════════
+           ✅ FORGOT PASSWORD — Firebase password reset
+        ══════════════════════════════════════════════ */
+        function doForgotPassword(e) {
+            e.preventDefault();
+            var email = document.getElementById('l-email').value.trim();
+
+            if (!email) {
+                showAlert('login-err', 'Enter your email above first, then click Forgot password.', 'error');
+                document.getElementById('l-email').focus();
+                return;
+            }
+
+            auth.sendPasswordResetEmail(email)
+                .then(function () {
+                    showAlert('login-ok', 'Password reset email sent! Check your inbox.', 'success');
+                })
+                .catch(function (err) {
+                    showAlert('login-err', friendlyError(err.code), 'error');
+                });
+        }
+
+        /* ══════════════════════════════════════════════
+           ENTER KEY
+        ══════════════════════════════════════════════ */
         document.addEventListener('keydown', function (e) {
             if (e.key !== 'Enter') return;
             if (document.getElementById('section-login').classList.contains('active')) doLogin();
             else doRegister();
         });
 
-        /* ── AUTO-FILL REMEMBERED EMAIL ── */
-        (function () {
-            var r = localStorage.getItem('esl_remember');
-            if (r) { try { document.getElementById('l-email').value = JSON.parse(r).email; } catch (e) { } }
-        })();
+        /* ══════════════════════════════════════════════
+           AUTO-REDIRECT — already logged in nam
+        ══════════════════════════════════════════════ */
+        auth.onAuthStateChanged(function (user) {
+            if (user) {
+                // User already logged in — redirect
+                // window.location.href = '../index.html';
+                // ↑ Comment out karanna development waladi
+            }
+        });
     </script>
 </body>
 

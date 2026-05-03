@@ -709,3 +709,123 @@ document.addEventListener('DOMContentLoaded', function () {
 function showDetail(place) {
     alert('Showing details for: ' + place);
 }
+// ══════════════════════════════════════
+//  TRADITIONAL FOODS — Data & Logic
+// ══════════════════════════════════════
+
+const foodData = {
+    1: {
+        title: 'Rice & Curry',
+        category: 'Rice & Curry',
+        location: 'Island-Wide',
+        spice: 'Mild to Spicy',
+        desc: 'Sri Lanka\'s national dish. A plate of steamed rice surrounded by multiple curries — typically dhal, chicken or fish curry, pol sambol (coconut relish), and crispy papadum. Every household and region has its own unique recipe passed down through generations. Best enjoyed on a banana leaf for the full experience.'
+    },
+    2: {
+        title: 'Kottu Roti',
+        category: 'Snack',
+        location: 'Island-Wide',
+        spice: 'Medium',
+        desc: 'Made by chopping up godamba roti on a hot griddle with vegetables, eggs, cheese, or meat and a blend of spices. The rhythmic clanging of the metal blades is the signature sound of Sri Lankan street food culture. Available in chicken, beef, egg, or vegetable varieties.'
+    },
+    3: {
+        title: 'Hoppers (Appa)',
+        category: 'Snack',
+        location: 'Colombo, Kandy',
+        spice: 'Mild',
+        desc: 'Fermented rice flour and coconut milk batter poured into a small wok-shaped pan, creating a crispy bowl with a soft centre. Egg hoppers have an egg cracked into the centre while it cooks. String hoppers (idiyappam) are a steamed noodle variation. Served with lunu miris (onion chilli paste) or coconut sambol.'
+    },
+    4: {
+        title: 'Jaffna Crab Curry',
+        category: 'Seafood',
+        location: 'Jaffna',
+        spice: 'Very Spicy',
+        desc: 'A fiercely spiced crab curry from Sri Lanka\'s Northern Province. Cooked with freshly ground Jaffna curry powder, dried red chillies, and coconut milk. The unique Jaffna spice blend gives this dish an unmatched depth of flavour. Best enjoyed with string hoppers or steamed rice.'
+    },
+    5: {
+        title: 'Watalappan',
+        category: 'Sweet',
+        location: 'Island-Wide',
+        spice: 'Not Spicy',
+        desc: 'A creamy steamed pudding of Malay origin, made with coconut milk, jaggery (kithul treacle), eggs, and warming spices like cardamom and nutmeg. Often garnished with cashew nuts. A staple at Eid celebrations and Muslim households, but enjoyed island-wide at special occasions and restaurants.'
+    },
+    6: {
+        title: 'Isso Vadai',
+        category: 'Seafood',
+        location: 'Negombo, Jaffna',
+        spice: 'Medium',
+        desc: 'Crispy deep-fried lentil fritters topped with whole prawns (isso), chillies, and onion. A beloved coastal snack sold by vendors at beachside stalls and markets. The crunchy exterior, soft interior, and juicy prawn on top make it one of Sri Lanka\'s most addictive street foods.'
+    },
+    7: {
+        title: 'Kavum',
+        category: 'Sweet',
+        location: 'Island-Wide',
+        spice: 'Not Spicy',
+        desc: 'Traditional deep-fried sweet cakes made from rice flour and kithul treacle (dark palm jaggery syrup). A quintessential Sri Lankan New Year (Avurudu) treat, shaped into round discs and fried to a deep golden colour. Often made alongside kokis (crispy Dutch-influenced fried pastries) as part of festive preparations.'
+    },
+    8: {
+        title: 'Lamprais',
+        category: 'Rice & Curry',
+        location: 'Colombo',
+        spice: 'Mild',
+        desc: 'A Dutch-Burgher heritage dish — rice cooked in stock, accompanied by a combination of curries, a blachan (prawn paste), and other accompaniments, all wrapped together in a banana leaf and baked. The banana leaf infuses a unique earthy aroma. A beloved Sunday lunch tradition among Burgher communities in Colombo.'
+    }
+};
+
+// ── Filter tabs ──────────────────────
+function setFoodFilter(btn, cat) {
+    document.querySelectorAll('.food-tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+
+    let visible = 0;
+    document.querySelectorAll('.food-card').forEach(card => {
+        const show = cat === 'all' || card.dataset.category === cat;
+        card.style.display = show ? '' : 'none';
+        if (show) visible++;
+    });
+
+    const noResults = document.getElementById('foodsNoResults');
+    if (noResults) noResults.style.display = visible === 0 ? 'block' : 'none';
+}
+
+// ── Modal open ───────────────────────
+function openFoodModal(id) {
+    const data = foodData[id];
+    if (!data) return;
+
+    document.getElementById('modalFoodTitle').textContent = data.title;
+    document.getElementById('modalFoodLocation').textContent = data.location;
+    document.getElementById('modalFoodSpice').textContent = data.spice;
+    document.getElementById('modalFoodDesc').textContent = data.desc;
+
+    const catTag = document.getElementById('modalFoodCatTag');
+    catTag.textContent = data.category;
+    catTag.className = 'modal-food-cat-tag';
+
+    const catClassMap = {
+        'Rice & Curry': 'tag-rice',
+        'Snack': 'tag-snack',
+        'Sweet': 'tag-sweet',
+        'Seafood': 'tag-seafood'
+    };
+    catTag.classList.add(catClassMap[data.category] || '');
+
+    document.getElementById('foodModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+// ── Modal close ──────────────────────
+function closeFoodModal(e) {
+    if (e && e.target !== document.getElementById('foodModal')) return;
+    closeFoodModalBtn();
+}
+
+function closeFoodModalBtn() {
+    document.getElementById('foodModal').classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+// Close on Escape key
+document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeFoodModalBtn();
+});
